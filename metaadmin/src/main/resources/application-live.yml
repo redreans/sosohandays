@@ -1,0 +1,22 @@
+spring:
+  config:
+    activate:
+      on-profile: live
+
+  datasource:
+    url: jdbc:mariadb://api.sosohandays.com:21001/sosohandays?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Seoul # 실제 운영 DB URL
+    username: webapp
+    password: ssw@#1029
+    driver-class-name: org.mariadb.jdbc.Driver
+    hikari:
+      maximum-pool-size: 30
+      minimum-idle: 5
+
+logging:
+  file:
+    name: logs/sosohandays-live.log
+  level:
+    root: INFO
+    com.sosohandays: INFO
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n"
