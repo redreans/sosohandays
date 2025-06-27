@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sosohandays.metaadmin.mt.wordmngt.mapper.MTWordMngtSQL">
+
+    <resultMap id="wordResultMap" type="com.sosohandays.metaadmin.mt.wordmngt.dto.MTWordMngtDTO">
+        <result property="wordId" column="WORD_ID"/>
+        <result property="wordPscNm" column="WORD_PSC_NM"/>
+        <result property="wordLgcNm" column="WORD_LGC_NM"/>
+        <result property="descCten" column="DESC_CTEN"/>
+        <result property="useYn" column="USE_YN"/>
+        <result property="frRgstDttm" column="FR_RGST_DTTM"/>
+        <result property="frRgstId" column="FR_RGST_ID"/>
+        <result property="finlChgDttm" column="FINL_CHG_DTTM"/>
+        <result property="finlChgId" column="FINL_CHG_ID"/>
+    </resultMap>
+
+    <select id="selectByCond" parameterType="com.sosohandays.metaadmin.mt.wordmngt.dto.MTWordMngtDTO" resultMap="wordResultMap">
+SELECT T.WORD_ID
+     , T.WORD_PSC_NM
+     , T.WORD_LGC_NM
+     , T.DESC_CTEN
+     , T.USE_YN
+     , T.FR_RGST_DTTM
+     , T.FR_RGST_ID
+     , T.FINL_CHG_DTTM
+     , T.FINL_CHG_ID
+  FROM TB_CO0001M_WORD T
+        <where>
+            <if test="wordId != null and wordId != ''">
+                AND T.WORD_ID = #{wordId}
+            </if>
+            <if test="wordPscNm != null and wordPscNm != ''">
+                AND T.WORD_PSC_NM LIKE CONCAT('%', #{wordPscNm}, '%')
+            </if>
+            <if test="wordLgcNm != null and wordLgcNm != ''">
+                AND T.WORD_LGC_NM LIKE CONCAT('%', #{wordLgcNm}, '%')
+            </if>
+            <if test="useYn != null and useYn != ''">
+                AND T.USE_YN = #{useYn}
+            </if>
+        </where>
+    </select>
+
+    <select id="selectExistsById" parameterType="string" resultType="boolean">
+SELECT COUNT(1) > 0
+  FROM TB_CO0001M_WORD
+ WHERE WORD_ID = #{wordId}
+    </select>
+
+    <insert id="insert" parameterType="com.sosohandays.metaadmin.mt.wordmngt.dto.MTWordMngtDTO">
+INSERT INTO TB_CO0001M_WORD
+     ( WORD_ID
+     , WORD_PSC_NM
+     , WORD_LGC_NM
+     , DESC_CTEN
+     , USE_YN
+     , FR_RGST_DTTM
+     , FR_RGST_ID
+     , FINL_CHG_DTTM
+     , FINL_CHG_ID
+     )
+     VALUES
+         ( #{wordId}
+         , #{wordPscNm}
+         , #{wordLgcNm}
+         , #{descCten}
+         , #{useYn}
+         , NOW()
+         , #{frRgstId}
+         , NOW()
+         , #{finlChgId}
+         )
+    </insert>
+
+    <update id="update" parameterType="com.sosohandays.metaadmin.mt.wordmngt.dto.MTWordMngtDTO">
+UPDATE TB_CO0001M_WORD
+   SET WORD_PSC_NM   = #{wordPscNm}
+     , WORD_LGC_NM   = #{wordLgcNm}
+     , DESC_CTEN     = #{descCten}
+     , USE_YN        = #{useYn}
+     , FINL_CHG_DTTM = NOW()
+     , FINL_CHG_ID   = #{finlChgId}
+ WHERE WORD_ID = #{wordId}
+    </update>
+
+    <delete id="delete" parameterType="com.sosohandays.metaadmin.mt.wordmngt.dto.MTWordMngtDTO">
+DELETE
+  FROM TB_CO0001M_WORD
+ WHERE WORD_ID = #{wordId}
+    </delete>
+
+</mapper>

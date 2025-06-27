@@ -5,3 +5,21 @@ spring:
   jackson:
     serialization:
       INDENT_OUTPUT: true
+
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    # HikariCP 풀 설정 (대부분의 경우 이 값들은 프로필에 관계없이 공통으로 사용)
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 5
+      connection-timeout: 30000 # 30초
+      idle-timeout: 600000 # 10분
+      max-lifetime: 1800000 # 30분
+
+
+  mybatis: # MyBatis 설정 시작
+    mapper-locations: classpath:/mapper/**/*.xml # MyBatis XML 매퍼 파일의 경로
+    configuration:
+      map-underscore-to-camel-case: true # DB 컬럼명 (snake_case) -> 자바 필드명 (camelCase) 자동 매핑
+    type-aliases-package: com.sosohandays.metaadmin # MyBtis 타입 별칭 패키지 (common 모듈의 도메인 클래스)
+

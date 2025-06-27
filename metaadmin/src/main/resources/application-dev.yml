@@ -1,16 +1,12 @@
 spring:
   config:
     activate:
-      on-profile: devD
+      on-profile: dev
 
   datasource:
     url: jdbc:mariadb://api.sosohandays.com:21001/sosohandays?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Seoul # 실제 운영 DB URL
     username: webapp
     password: ssw@#1029
-    driver-class-name: org.mariadb.jdbc.Driver
-    hikari:
-      maximum-pool-size: 10
-      minimum-idle: 1
 
 logging:
   file:

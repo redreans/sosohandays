@@ -6,10 +6,6 @@ spring:
     url: jdbc:mariadb://api.sosohandays.com:21001/sosohandays?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Seoul # 실제 운영 DB URL
     username: webapp
     password: ssw@#1029
-    driver-class-name: org.mariadb.jdbc.Driver
-    hikari:
-      maximum-pool-size: 30
-      minimum-idle: 5
 
 logging:
   file:
