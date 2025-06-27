@@ -29,20 +29,20 @@ public class MTWordMngtCTRL {
     }
 
     @PostMapping("/insert")
-    public ResponseEntity<SshdResponse<String>> insert(@RequestBody @Valid MTWordMngtDTO dto) {
-        mTWordMngtSVC.insert(dto);
-        return ResponseEntity.ok(SshdResponse.success("저장 성공"));
+    public ResponseEntity<SshdResponse<List<MTWordMngtDTO>>> insert(@RequestBody @Valid MTWordMngtDTO dto) {
+        SshdResponse<List<MTWordMngtDTO>> resultData = mTWordMngtSVC.insert(dto);
+        return ResponseEntity.ok(resultData);
     }
 
     @PostMapping("/update")
-    public ResponseEntity<SshdResponse<String>> update(@RequestBody @Valid MTWordMngtDTO dto) {
-        mTWordMngtSVC.update(dto);
-        return ResponseEntity.ok(SshdResponse.success("수정 성공"));
+    public ResponseEntity<SshdResponse<List<MTWordMngtDTO>>> update(@RequestBody @Valid MTWordMngtDTO dto) {
+        SshdResponse<List<MTWordMngtDTO>> resultData = mTWordMngtSVC.update(dto);
+        return ResponseEntity.ok(resultData);
     }
 
     @PostMapping("/delete")
-    public ResponseEntity<SshdResponse<String>> delete(@RequestBody @Valid MTWordMngtDTO dto) {
-        mTWordMngtSVC.delete(dto);
-        return ResponseEntity.ok(SshdResponse.success("삭제 성공"));
+    public ResponseEntity<SshdResponse<List<MTWordMngtDTO>>> delete(@RequestBody @Valid MTWordMngtDTO dto) {
+        SshdResponse<List<MTWordMngtDTO>> resultData = mTWordMngtSVC.delete(dto);
+        return ResponseEntity.ok(resultData);
     }
 }

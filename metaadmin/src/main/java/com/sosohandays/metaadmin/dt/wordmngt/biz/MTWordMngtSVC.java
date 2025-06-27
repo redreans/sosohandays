@@ -22,9 +22,8 @@ public class MTWordMngtSVC {
      * @return 용어 DTO 목록
      */
     public SshdResponse<List<MTWordMngtDTO>> getList(MTWordMngtDTO dto) {
-        SshdResponse<List<MTWordMngtDTO>> resultData = SshdResponse.success(mapper.selectByCond(dto));
 
-        return resultData;
+        return SshdResponse.success(mapper.selectByCond(dto));
     }
 
     /**
@@ -37,7 +36,7 @@ public class MTWordMngtSVC {
     public SshdResponse<List<MTWordMngtDTO>> insert(MTWordMngtDTO dto) {
         SshdResponse<List<MTWordMngtDTO>> resultData;
         if (mapper.selectExistsById(dto.getWordId())) {
-            resultData = SshdResponse.fail("11", "이미 존재하는 단어 ID입니다.");
+            resultData = SshdResponse.fail("10", "이미 존재하는 단어 ID입니다.");
         }
         else {
             int cnt = mapper.insert(dto);
@@ -46,7 +45,7 @@ public class MTWordMngtSVC {
                 resultData = SshdResponse.success();
             }
             else {
-                resultData = SshdResponse.fail("11", "저장 실패");
+                resultData = SshdResponse.fail("40", "저장 실패");
             }
         }
         return resultData;
@@ -59,11 +58,23 @@ public class MTWordMngtSVC {
      * @throws SshdException 존재하지 않는 ID일 경우 발생
      */
     @Transactional
-    public boolean update(MTWordMngtDTO dto) {
+    public SshdResponse<List<MTWordMngtDTO>> update(MTWordMngtDTO dto) {
+        SshdResponse<List<MTWordMngtDTO>> resultData;
         if (!mapper.selectExistsById(dto.getWordId())) {
-            throw new SshdException("존재하지 않는 단어 ID입니다.");
+            resultData = SshdResponse.fail("10", "존재하지 않는 단어 ID입니다.");
         }
-        return mapper.update(dto) > 0;
+        else {
+            int cnt = mapper.update(dto);
+
+            if (cnt > 0) {
+                // 성공 시 데이터 없이 성공 응답 반환
+                resultData = SshdResponse.success();
+            }
+            else {
+                resultData = SshdResponse.fail("40", "수정 실패");
+            }
+        }
+        return resultData;
     }
 
     /**
@@ -73,10 +84,22 @@ public class MTWordMngtSVC {
      * @throws SshdException 존재하지 않는 ID일 경우 발생
      */
     @Transactional
-    public boolean delete(MTWordMngtDTO dto) {
+    public SshdResponse<List<MTWordMngtDTO>> delete(MTWordMngtDTO dto) {
+        SshdResponse<List<MTWordMngtDTO>> resultData;
         if (!mapper.selectExistsById(dto.getWordId())) {
-            throw new SshdException("존재하지 않는 단어 ID입니다.");
+            resultData = SshdResponse.fail("10", "존재하지 않는 단어 ID입니다.");
         }
-        return mapper.delete(dto) > 0;
+        else {
+            int cnt = mapper.delete(dto);
+
+            if (cnt > 0) {
+                // 성공 시 데이터 없이 성공 응답 반환
+                resultData = SshdResponse.success();
+            }
+            else {
+                resultData = SshdResponse.fail("40", "삭제 실패");
+            }
+        }
+        return resultData;
     }
 }
