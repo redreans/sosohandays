@@ -3,9 +3,9 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.sosohandays.metaadmin.mt.wordmngt.mapper.MTWordMngtSQL">
+<mapper namespace="com.sosohandays.metaadmin.dt.wordmngt.db.MTWordMngtSQL">
 
-    <resultMap id="wordResultMap" type="com.sosohandays.metaadmin.mt.wordmngt.dto.MTWordMngtDTO">
+    <resultMap id="wordResultMap" type="com.sosohandays.metaadmin.dt.wordmngt.db.MTWordMngtDTO">
         <result property="wordId" column="WORD_ID"/>
         <result property="wordPscNm" column="WORD_PSC_NM"/>
         <result property="wordLgcNm" column="WORD_LGC_NM"/>
@@ -17,7 +17,7 @@
         <result property="finlChgId" column="FINL_CHG_ID"/>
     </resultMap>
 
-    <select id="selectByCond" parameterType="com.sosohandays.metaadmin.mt.wordmngt.dto.MTWordMngtDTO" resultMap="wordResultMap">
+    <select id="selectByCond" parameterType="com.sosohandays.metaadmin.dt.wordmngt.db.MTWordMngtDTO" resultMap="wordResultMap">
 SELECT T.WORD_ID
      , T.WORD_PSC_NM
      , T.WORD_LGC_NM
@@ -50,7 +50,7 @@ SELECT COUNT(1) > 0
  WHERE WORD_ID = #{wordId}
     </select>
 
-    <insert id="insert" parameterType="com.sosohandays.metaadmin.mt.wordmngt.dto.MTWordMngtDTO">
+    <insert id="insert" parameterType="com.sosohandays.metaadmin.dt.wordmngt.db.MTWordMngtDTO">
 INSERT INTO TB_CO0001M_WORD
      ( WORD_ID
      , WORD_PSC_NM
@@ -75,7 +75,7 @@ INSERT INTO TB_CO0001M_WORD
          )
     </insert>
 
-    <update id="update" parameterType="com.sosohandays.metaadmin.mt.wordmngt.dto.MTWordMngtDTO">
+    <update id="update" parameterType="com.sosohandays.metaadmin.dt.wordmngt.db.MTWordMngtDTO">
 UPDATE TB_CO0001M_WORD
    SET WORD_PSC_NM   = #{wordPscNm}
      , WORD_LGC_NM   = #{wordLgcNm}
@@ -86,7 +86,7 @@ UPDATE TB_CO0001M_WORD
  WHERE WORD_ID = #{wordId}
     </update>
 
-    <delete id="delete" parameterType="com.sosohandays.metaadmin.mt.wordmngt.dto.MTWordMngtDTO">
+    <delete id="delete" parameterType="com.sosohandays.metaadmin.dt.wordmngt.db.MTWordMngtDTO">
 DELETE
   FROM TB_CO0001M_WORD
  WHERE WORD_ID = #{wordId}

@@ -18,22 +18,18 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class MTWordMngtDTO {
 
-    @NotBlank
     @Size(max = 30)
     private String wordId;
 
-    @NotBlank
     @Size(max = 100)
     private String wordPscNm;
 
-    @NotBlank
     @Size(max = 100)
     private String wordLgcNm;
 
     @Size(max = 1000)
     private String descCten;
 
-    @NotBlank
     @Size(max = 1)
     private String useYn;
 

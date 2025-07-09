@@ -13,7 +13,13 @@ logging:
   file:
     name: logs/sosohandays-dev.log
   level:
-    root: DEBUG
+    root: INFO
     com.sosohandays: DEBUG
+
+    # MyBatis 관련 로그 설정
+    org.mybatis: DEBUG
+    org.apache.ibatis: DEBUG  # 마이바티스 핵심 패키지
+    org.mybatis.spring: DEBUG # MyBatis-Spring 연동 패키지
+
   pattern:
     console: "%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
