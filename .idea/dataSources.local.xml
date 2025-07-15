@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal" created-in="IU-251.26927.53">
+    <data-source name="mariadb" uuid="28bd4373-bce9-4c5f-8d64-2f2819fe0e9b">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MARIADB" />
+      <schema-mapping />
+      <load-sources>user_and_system_sources</load-sources>
+    </data-source>
+    <data-source name="mariadb" uuid="307f47f3-6d60-409d-be33-8c26870ecee9">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MARIADB" />
+      <schema-mapping />
+    </data-source>
+    <data-source name="mariadb" uuid="4a32ec3b-400b-4495-8d06-70536f7d431f">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MARIADB" />
+      <schema-mapping />
+    </data-source>
+    <data-source name="mariadb" uuid="897efef6-dde4-46e1-84ac-97a23dad3fd8">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MARIADB" />
+      <schema-mapping />
+    </data-source>
+  </component>
+</project>
