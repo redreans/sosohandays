@@ -3,9 +3,9 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.sosohandays.metaadmin.dt.wordmngt.db.MTWordMngtSQL">
+<mapper namespace="com.sosohandays.metaadmin.dt.wordmngt.biz.MTWordMngtSQL">
 
-    <resultMap id="wordResultMap" type="com.sosohandays.metaadmin.dt.wordmngt.db.MTWordMngtDTO">
+    <resultMap id="wordResultMap" type="com.sosohandays.metaadmin.dt.wordmngt.dto.MTWordMngtSub01DTO">
         <result property="wordId" column="WORD_ID"/>
         <result property="wordPscNm" column="WORD_PSC_NM"/>
         <result property="wordLgcNm" column="WORD_LGC_NM"/>
@@ -17,7 +17,7 @@
         <result property="finlChgId" column="FINL_CHG_ID"/>
     </resultMap>
 
-    <select id="selectByCond" parameterType="com.sosohandays.metaadmin.dt.wordmngt.db.MTWordMngtDTO" resultMap="wordResultMap">
+    <select id="selectByCond" parameterType="com.sosohandays.metaadmin.dt.wordmngt.dto.MTWordMngtDTO" resultMap="wordResultMap">
 SELECT T.WORD_ID
      , T.WORD_PSC_NM
      , T.WORD_LGC_NM
@@ -44,13 +44,28 @@ SELECT T.WORD_ID
         </where>
     </select>
 
-    <select id="selectExistsById" parameterType="string" resultType="boolean">
-SELECT COUNT(1) > 0
-  FROM TB_CO0001M_WORD
- WHERE WORD_ID = #{wordId}
+    <select id="selectExists" parameterType="map" resultType="boolean">
+        SELECT COUNT(1) > 0
+        FROM TB_CO0001M_WORD
+        <where>
+            <if test="wordId != null and wordId != ''">
+                WORD_ID = #{wordId}
+            </if>
+            <if test="wordLgcNm != null and wordLgcNm != ''">
+                AND WORD_LGC_NM = #{wordLgcNm}
+            </if>
+            <if test="wordPscNm != null and wordPscNm != ''">
+                AND WORD_PSC_NM = #{wordPscNm}
+            </if>
+        </where>
     </select>
 
-    <insert id="insert" parameterType="com.sosohandays.metaadmin.dt.wordmngt.db.MTWordMngtDTO">
+    <select id="selectNextWordId" resultType="string">
+        SELECT COALESCE(MAX(WORD_ID) + 1, 1000001) AS WORD_ID
+        FROM TB_CO0001M_WORD
+    </select>
+
+    <insert id="insert" parameterType="com.sosohandays.metaadmin.dt.wordmngt.dto.MTWordMngtSub01DTO">
 INSERT INTO TB_CO0001M_WORD
      ( WORD_ID
      , WORD_PSC_NM
@@ -67,7 +82,7 @@ INSERT INTO TB_CO0001M_WORD
          , #{wordPscNm}
          , #{wordLgcNm}
          , #{descCten}
-         , #{useYn}
+         , 'Y'
          , NOW()
          , #{frRgstId}
          , NOW()
@@ -75,7 +90,7 @@ INSERT INTO TB_CO0001M_WORD
          )
     </insert>
 
-    <update id="update" parameterType="com.sosohandays.metaadmin.dt.wordmngt.db.MTWordMngtDTO">
+    <update id="update" parameterType="com.sosohandays.metaadmin.dt.wordmngt.dto.MTWordMngtSub01DTO">
 UPDATE TB_CO0001M_WORD
    SET WORD_PSC_NM   = #{wordPscNm}
      , WORD_LGC_NM   = #{wordLgcNm}
@@ -85,11 +100,4 @@ UPDATE TB_CO0001M_WORD
      , FINL_CHG_ID   = #{finlChgId}
  WHERE WORD_ID = #{wordId}
     </update>
-
-    <delete id="delete" parameterType="com.sosohandays.metaadmin.dt.wordmngt.db.MTWordMngtDTO">
-DELETE
-  FROM TB_CO0001M_WORD
- WHERE WORD_ID = #{wordId}
-    </delete>
-
 </mapper>

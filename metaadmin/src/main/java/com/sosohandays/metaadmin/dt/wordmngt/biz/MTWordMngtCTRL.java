@@ -1,9 +1,10 @@
 package com.sosohandays.metaadmin.dt.wordmngt.biz;
 
-import com.sosohandays.metaadmin.dt.wordmngt.db.MTWordMngtDTO;
+import com.sosohandays.metaadmin.dt.wordmngt.dto.MTWordMngtDTO;
+import com.sosohandays.metaadmin.dt.wordmngt.dto.MTWordMngtSub01DTO;
 import exception.SshdException;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +16,7 @@ import util.StringUtil;
 
 import java.util.List;
 
+@Slf4j
 @Validated
 @RestController
 @RequestMapping("/mt/wordmngt")
@@ -24,76 +26,50 @@ public class MTWordMngtCTRL {
     private final MTWordMngtSVC mTWordMngtSVC;
 
     @PostMapping("/select")
-    public ResponseEntity<SshdResponse<List<MTWordMngtDTO>>> select(@RequestBody MTWordMngtDTO mTWordMngtDTO) {
-        SshdResponse<List<MTWordMngtDTO>> resultData = mTWordMngtSVC.getList(mTWordMngtDTO);
+    public ResponseEntity<SshdResponse<MTWordMngtDTO>> select(@RequestBody MTWordMngtDTO mTWordMngtDTO) {
+        SshdResponse<MTWordMngtDTO> resultData;
+
+        resultData = mTWordMngtSVC.getList(mTWordMngtDTO);
+
         return ResponseEntity.ok(resultData);
     }
 
     @PostMapping("/insert")
-    public ResponseEntity<SshdResponse<List<MTWordMngtDTO>>> insert(@RequestBody MTWordMngtDTO mTWordMngtDTO) {
-        SshdResponse<List<MTWordMngtDTO>> resultData = new SshdResponse<List<MTWordMngtDTO>>();
-        String checkVailDateCten = "";
-        try {
-            // 필수값 확인
-            if (!StringUtil.isNullOrEmpty(mTWordMngtDTO.getWordPscNm())) {
-                checkVailDateCten = checkVailDateCten.isEmpty() ? "" : "\n";
-                checkVailDateCten += "단어물리명이 없습니다.";
-            }
-            if (!StringUtil.isNullOrEmpty(mTWordMngtDTO.getWordLgcNm())) {
-                checkVailDateCten = "단어논리명이 없습니다.";
-            }
-            if (!StringUtil.isNullOrEmpty(mTWordMngtDTO.getDescCten())) {
-                checkVailDateCten = "단어설명이 없습니다.";
-            }
+    public ResponseEntity<SshdResponse<MTWordMngtDTO>> insert(@RequestBody MTWordMngtDTO mTWordMngtDTO) {
+        SshdResponse<MTWordMngtDTO> resultData;
 
-            resultData = mTWordMngtSVC.insert(mTWordMngtDTO);
+        log.debug("mTWordMngtDTO : {}", mTWordMngtDTO.toString());
 
+        // 필수값 확인
+        for (int i = 0; i < mTWordMngtDTO.getMTWordMngtSub01DTOList().size(); i++) {
+            MTWordMngtSub01DTO tuple = mTWordMngtDTO.getMTWordMngtSub01DTOList().get(i);
+            if (StringUtil.isNullOrEmpty(tuple.getWordPscNm())) {
+                throw new SshdException("단어물리명이 없습니다.");
+            }
+            if (StringUtil.isNullOrEmpty(tuple.getWordLgcNm())) {
+                throw new SshdException("단어논리명이 없습니다.");
+            }
+            if (StringUtil.isNullOrEmpty(tuple.getDescCten())) {
+                throw new SshdException("단어설명이 없습니다.");
+            }
         }
-        catch (SshdException e) {
-            resultData.setResultCd("99");
-            resultData.setResultCten(e.getMessage());
-        }
+
+        resultData = mTWordMngtSVC.insert(mTWordMngtDTO);
+
         return ResponseEntity.ok(resultData);
     }
 
     @PostMapping("/update")
-    public ResponseEntity<SshdResponse<List<MTWordMngtDTO>>> update(@RequestBody MTWordMngtDTO mTWordMngtDTO) {
-        SshdResponse<List<MTWordMngtDTO>> resultData = new SshdResponse<List<MTWordMngtDTO>>();
-        String checkVailDateCten = "";
-        try {
-            // 필수값 확인
-            if (!StringUtil.isNullOrEmpty(mTWordMngtDTO.getWordId())) {
-                checkVailDateCten = checkVailDateCten.isEmpty() ? "" : "\n";
-                checkVailDateCten += "단어물리명이 없습니다.";
-            }
+    public ResponseEntity<SshdResponse<MTWordMngtDTO>> update(@RequestBody MTWordMngtDTO mTWordMngtDTO) {
+        SshdResponse<MTWordMngtDTO> resultData;
 
-            resultData = mTWordMngtSVC.update(mTWordMngtDTO);
-
-        }
-        catch (SshdException e) {
-            resultData.setResultCd("99");
-            resultData.setResultCten(e.getMessage());
-        }
-        return ResponseEntity.ok(resultData);
-    }
-
-    @PostMapping("/delete")
-    public ResponseEntity<SshdResponse<List<MTWordMngtDTO>>> delete(@RequestBody MTWordMngtDTO mTWordMngtDTO) {
-        SshdResponse<List<MTWordMngtDTO>> resultData = new SshdResponse<List<MTWordMngtDTO>>();
-        String checkVailDateCten = "";
-        try {
-            // 필수값 확인
-            if (!StringUtil.isNullOrEmpty(mTWordMngtDTO.getWordId())) {
-                checkVailDateCten = checkVailDateCten.isEmpty() ? "" : "\n";
-                checkVailDateCten += "단어물리명이 없습니다.";
+        for (MTWordMngtSub01DTO tuple : mTWordMngtDTO.getMTWordMngtSub01DTOList()) {
+            if (StringUtil.isNullOrEmpty(tuple.getWordId())) {
+                throw new SshdException("단어ID가 없습니다.");
             }
         }
-        catch (SshdException e) {
-            resultData.setResultCd("99");
-            resultData.setResultCten(e.getMessage());
-        }
 
-        resultData = mTWordMngtSVC.delete(mTWordMngtDTO);
+        resultData = mTWordMngtSVC.update(mTWordMngtDTO);
 
         return ResponseEntity.ok(resultData);
     }

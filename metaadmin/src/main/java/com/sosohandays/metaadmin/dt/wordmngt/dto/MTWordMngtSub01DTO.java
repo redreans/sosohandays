@@ -1,6 +1,5 @@
-package com.sosohandays.metaadmin.dt.wordmngt.db;
+package com.sosohandays.metaadmin.dt.wordmngt.dto;
 
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,7 +15,7 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class MTWordMngtDTO {
+public class MTWordMngtSub01DTO {
 
     @Size(max = 30)
     private String wordId;

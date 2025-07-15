@@ -1,33 +1,40 @@
 package com.sosohandays.metaadmin.dt.wordmngt.biz;
 
-import com.sosohandays.metaadmin.dt.wordmngt.db.MTWordMngtDTO;
-import com.sosohandays.metaadmin.dt.wordmngt.db.MTWordMngtSQL;
+import com.sosohandays.metaadmin.dt.wordmngt.dto.MTWordMngtDTO;
+import com.sosohandays.metaadmin.dt.wordmngt.dto.MTWordMngtSub01DTO;
 import exception.SshdException;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import response.SshdResponse;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor // final 필드에 대한 생성자를 자동으로 주입해줍니다.
 public class MTWordMngtSVC {
 
     private final MTWordMngtSQL mTWordMngtSQL;
-    private static final Logger log = LoggerFactory.getLogger(MTWordMngtSVC.class);
 
     /**
      * 조건에 맞는 용어 목록을 조회합니다.
      * @param mTWordMngtDTO 검색 조건
      * @return 용어 DTO 목록
      */
-    public SshdResponse<List<MTWordMngtDTO>> getList(MTWordMngtDTO mTWordMngtDTO) {
+    public SshdResponse<MTWordMngtDTO> getList(MTWordMngtDTO mTWordMngtDTO) {
         log.debug("getList mTWordMngtDTO : {}", mTWordMngtDTO);
+        MTWordMngtDTO resultData = new MTWordMngtDTO();
 
-        return SshdResponse.success(mTWordMngtSQL.selectByCond(mTWordMngtDTO));
+        List<MTWordMngtSub01DTO> resultList = mTWordMngtSQL.selectByCond(mTWordMngtDTO);
+        resultData.setMTWordMngtSub01DTOList(resultList);
+
+        return SshdResponse.success(resultData);
     }
 
     /**
@@ -37,23 +44,42 @@ public class MTWordMngtSVC {
      * @throws SshdException 이미 존재하는 ID일 경우 발생
      */
     @Transactional
-    public SshdResponse<List<MTWordMngtDTO>> insert(MTWordMngtDTO mTWordMngtDTO) {
+    public SshdResponse<MTWordMngtDTO> insert(MTWordMngtDTO mTWordMngtDTO) {
         log.debug("insert mTWordMngtDTO : {}", mTWordMngtDTO);
 
-        SshdResponse<List<MTWordMngtDTO>> resultData;
-        if (mTWordMngtSQL.selectExistsById(mTWordMngtDTO.getWordId())) {
-            resultData = SshdResponse.fail("10", "이미 존재하는 단어 ID입니다.");
+        SshdResponse<MTWordMngtDTO> resultData;
+        int cnt = 0;
+
+        for (MTWordMngtSub01DTO tuple : mTWordMngtDTO.getMTWordMngtSub01DTOList()) {
+            log.debug("tuple : {}", tuple.toString());
+
+            Map<String, Object> checkMap = new HashMap<>();
+            checkMap.put("wordLgcNm", tuple.getWordLgcNm());
+            if (mTWordMngtSQL.selectExists(checkMap)) {
+                throw new SshdException(tuple.getWordLgcNm() + "는 이미 존재하는 단어물리명입니다.");
+            }
+
+            checkMap.clear();
+            checkMap.put("wordPscNm", tuple.getWordPscNm());
+            if (mTWordMngtSQL.selectExists(checkMap)) {
+                throw new SshdException(tuple.getWordPscNm() + "는 이미 존재하는 단어논리명입니다.");
+            }
+
+            tuple.setWordId(mTWordMngtSQL.selectNextWordId());
+
+            tuple.setFinlChgId("admin");
+            tuple.setFrRgstId ("admin");
+
+            cnt = mTWordMngtSQL.insert(tuple);
+        }
+
+        if (cnt > 0) {
+            resultData = SshdResponse.success();
         }
         else {
-            int cnt = mTWordMngtSQL.insert(mTWordMngtDTO);
-
-            if (cnt > 0) {
-                resultData = SshdResponse.success();
-            }
-            else {
-                resultData = SshdResponse.fail("40", "저장 실패");
-            }
+            throw new SshdException("저장에 실패하였습니다.");
         }
+
         return resultData;
     }
 
@@ -64,52 +90,31 @@ public class MTWordMngtSVC {
      * @throws SshdException 존재하지 않는 ID일 경우 발생
      */
     @Transactional
-    public SshdResponse<List<MTWordMngtDTO>> update(MTWordMngtDTO mTWordMngtDTO) {
+    public SshdResponse<MTWordMngtDTO> update(MTWordMngtDTO mTWordMngtDTO) {
         log.debug("update mTWordMngtDTO : {}", mTWordMngtDTO);
 
-        SshdResponse<List<MTWordMngtDTO>> resultData;
-        if (!mTWordMngtSQL.selectExistsById(mTWordMngtDTO.getWordId())) {
-            resultData = SshdResponse.fail("10", "존재하지 않는 단어 ID입니다.");
+        SshdResponse<MTWordMngtDTO> resultData;
+        int cnt = 0;
+
+        for (MTWordMngtSub01DTO tuple : mTWordMngtDTO.getMTWordMngtSub01DTOList()) {
+            Map<String, Object> checkMap = new HashMap<>();
+            checkMap.put("wordId", tuple.getWordId());
+            if (!mTWordMngtSQL.selectExists(checkMap)) {
+                throw new SshdException(tuple.getWordId() + "는 존재하지 않는 단어ID입니다.");
+            }
+
+            tuple.setFrRgstId ("admin");
+
+            cnt = mTWordMngtSQL.update(tuple);
+        }
+
+        if (cnt > 0) {
+            resultData = SshdResponse.success();
         }
         else {
-            int cnt = mTWordMngtSQL.update(mTWordMngtDTO);
-
-            if (cnt > 0) {
-                // 성공 시 데이터 없이 성공 응답 반환
-                resultData = SshdResponse.success();
-            }
-            else {
-                resultData = SshdResponse.fail("40", "수정 실패");
-            }
+            throw new SshdException("저장에 실패하였습니다.");
         }
-        return resultData;
-    }
 
-    /**
-     * 용어를 삭제합니다.
-     * @param mTWordMngtDTO 삭제할 용어 정보 (wordId 필요)
-     * @return 삭제 성공 시 true
-     * @throws SshdException 존재하지 않는 ID일 경우 발생
-     */
-    @Transactional
-    public SshdResponse<List<MTWordMngtDTO>> delete(MTWordMngtDTO mTWordMngtDTO) {
-        log.debug("delete mTWordMngtDTO : {}", mTWordMngtDTO);
-
-        SshdResponse<List<MTWordMngtDTO>> resultData;
-        if (!mTWordMngtSQL.selectExistsById(mTWordMngtDTO.getWordId())) {
-            resultData = SshdResponse.fail("10", "존재하지 않는 단어 ID입니다.");
-        }
-        else {
-            int cnt = mTWordMngtSQL.delete(mTWordMngtDTO);
-
-            if (cnt > 0) {
-                // 성공 시 데이터 없이 성공 응답 반환
-                resultData = SshdResponse.success();
-            }
-            else {
-                resultData = SshdResponse.fail("40", "삭제 실패");
-            }
-        }
         return resultData;
     }
 }

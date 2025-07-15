@@ -4,9 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c6208d31-02ce-4b2a-bfc8-f20aa82d6bdd" name="변경" comment="수정">
+    <list default="true" id="c6208d31-02ce-4b2a-bfc8-f20aa82d6bdd" name="변경" comment="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
+      <change afterPath="$PROJECT_DIR$/metaadmin/src/main/java/com/sosohandays/metaadmin/co/handler/SshExceptionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metaadmin/src/main/java/com/sosohandays/metaadmin/dt/wordmngt/dto/MTWordMngtDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/logs/sosohandays-live.log" beforeDir="false" afterPath="$PROJECT_DIR$/api/logs/sosohandays-live.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/common/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/util/StringUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/util/StringUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/metaadmin/src/main/java/com/sosohandays/metaadmin/dt/wordmngt/biz/MTWordMngtCTRL.java" beforeDir="false" afterPath="$PROJECT_DIR$/metaadmin/src/main/java/com/sosohandays/metaadmin/dt/wordmngt/biz/MTWordMngtCTRL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/metaadmin/src/main/java/com/sosohandays/metaadmin/dt/wordmngt/biz/MTWordMngtSVC.java" beforeDir="false" afterPath="$PROJECT_DIR$/metaadmin/src/main/java/com/sosohandays/metaadmin/dt/wordmngt/biz/MTWordMngtSVC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/metaadmin/src/main/java/com/sosohandays/metaadmin/dt/wordmngt/db/MTWordMngtDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/metaadmin/src/main/java/com/sosohandays/metaadmin/dt/wordmngt/dto/MTWordMngtSub01DTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/metaadmin/src/main/java/com/sosohandays/metaadmin/dt/wordmngt/db/MTWordMngtSQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/metaadmin/src/main/java/com/sosohandays/metaadmin/dt/wordmngt/biz/MTWordMngtSQL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/metaadmin/src/main/resources/mapper/mt/wordmngt/MTWordMngtSQL.xml" beforeDir="false" afterPath="$PROJECT_DIR$/metaadmin/src/main/resources/mapper/mt/wordmngt/MTWordMngtSQL.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +62,7 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -81,43 +91,47 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Downloaded.Files.Path.Enabled": "false",
-    "Gradle.sosohandays 빌드.executor": "Run",
-    "Gradle.소스 다운로드.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Notification.DisplayName-DoNotAsk-DatabaseConfigFileWatcher.found": "데이터베이스 연결 매개변수가 발견됨",
-    "Notification.DoNotAsk-DatabaseConfigFileWatcher.found": "true",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "Spring Boot.MetaadminApplication.executor": "Debug",
-    "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "D:/00.project/01.java/sosohandays/api/src/main/resources",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Gradle.sosohandays 빌드.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.소스 다운로드.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Notification.DisplayName-DoNotAsk-DatabaseConfigFileWatcher.found&quot;: &quot;데이터베이스 연결 매개변수가 발견됨&quot;,
+    &quot;Notification.DoNotAsk-DatabaseConfigFileWatcher.found&quot;: &quot;true&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Spring Boot.MetaadminApplication.executor&quot;: &quot;Debug&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/00.project/01.java/sosohandays/api/src/main/resources&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\00.project\01.java\sosohandays\api\src\main\resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\00.project\01.java\sosohandays\metaadmin\src\main\resources" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.sosohandays.metaadmin.co.handler" />
+      <recent name="com.sosohandays.metaadmin.dt.wordmngt.db" />
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.MetaadminApplication">
@@ -169,7 +183,7 @@
       <workItem from="1751009193346" duration="536000" />
       <workItem from="1752024593140" duration="3873000" />
       <workItem from="1752455948186" duration="3600000" />
-      <workItem from="1752555108514" duration="11232000" />
+      <workItem from="1752555108514" duration="10111000" />
     </task>
     <task id="LOCAL-00001" summary="수정">
       <option name="closed" value="true" />
@@ -203,30 +217,34 @@
       <option name="project" value="LOCAL" />
       <updated>1752024717504</updated>
     </task>
-    <task id="LOCAL-00005" summary="수정">
+    <task id="LOCAL-00005" summary="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
       <option name="closed" value="true" />
-      <created>1752566770363</created>
+      <created>1752567284938</created>
       <option name="number" value="00005" />
       <option name="presentableId" value="LOCAL-00005" />
       <option name="project" value="LOCAL" />
-      <updated>1752566770363</updated>
+      <updated>1752567284938</updated>
     </task>
-    <task id="LOCAL-00006" summary="수정">
-      <option name="closed" value="true" />
-      <created>1752566995053</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1752566995053</updated>
-    </task>
-    <option name="localTasksCounter" value="7" />
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="수정" />
-    <option name="LAST_COMMIT_MESSAGE" value="수정" />
+    <MESSAGE value="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
   </component>
 </project>

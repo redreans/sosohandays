@@ -8,9 +8,9 @@ public class StringUtil {
      * @return 여부
      */
     public static boolean isNullOrEmpty(String str) {
-        boolean returnVal = true;
+        boolean returnVal = false;
         if (null == str || str.trim().isEmpty()) {
-            returnVal = false;
+            returnVal = true;
         }
 
         return returnVal;
