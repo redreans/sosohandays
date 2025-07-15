@@ -5,22 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c6208d31-02ce-4b2a-bfc8-f20aa82d6bdd" name="변경" comment="수정">
-      <change afterPath="$PROJECT_DIR$/common/src/main/java/util/StringUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/api/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/logs/sosohandays-live.log" beforeDir="false" afterPath="$PROJECT_DIR$/api/logs/sosohandays-live.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/resources/application-dev.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/metaadmin/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/metaadmin/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/metaadmin/logs/sosohandays-live.log" beforeDir="false" afterPath="$PROJECT_DIR$/metaadmin/logs/sosohandays-live.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/metaadmin/src/main/java/com/sosohandays/metaadmin/dt/wordmngt/biz/MTWordMngtCTRL.java" beforeDir="false" afterPath="$PROJECT_DIR$/metaadmin/src/main/java/com/sosohandays/metaadmin/dt/wordmngt/biz/MTWordMngtCTRL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/metaadmin/src/main/java/com/sosohandays/metaadmin/dt/wordmngt/biz/MTWordMngtSVC.java" beforeDir="false" afterPath="$PROJECT_DIR$/metaadmin/src/main/java/com/sosohandays/metaadmin/dt/wordmngt/biz/MTWordMngtSVC.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/metaadmin/src/main/java/com/sosohandays/metaadmin/dt/wordmngt/db/MTWordMngtDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/metaadmin/src/main/java/com/sosohandays/metaadmin/dt/wordmngt/db/MTWordMngtDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/metaadmin/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/metaadmin/src/main/resources/application-dev.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/metaadmin/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/metaadmin/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/metaadmin/src/main/resources/mapper/mt/wordmngt/MTwordMngtSQL.xml" beforeDir="false" afterPath="$PROJECT_DIR$/metaadmin/src/main/resources/mapper/mt/wordmngt/MTWordMngtSQL.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,7 +169,7 @@
       <workItem from="1751009193346" duration="536000" />
       <workItem from="1752024593140" duration="3873000" />
       <workItem from="1752455948186" duration="3600000" />
-      <workItem from="1752555108514" duration="10111000" />
+      <workItem from="1752555108514" duration="11232000" />
     </task>
     <task id="LOCAL-00001" summary="수정">
       <option name="closed" value="true" />
@@ -217,7 +203,23 @@
       <option name="project" value="LOCAL" />
       <updated>1752024717504</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="수정">
+      <option name="closed" value="true" />
+      <created>1752566770363</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1752566770363</updated>
+    </task>
+    <task id="LOCAL-00006" summary="수정">
+      <option name="closed" value="true" />
+      <created>1752566995053</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1752566995053</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

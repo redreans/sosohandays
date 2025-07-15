@@ -39,10 +39,10 @@ public class MTWordMngtCTRL {
                 checkVailDateCten = checkVailDateCten.isEmpty() ? "" : "\n";
                 checkVailDateCten += "단어물리명이 없습니다.";
             }
-            else if (!StringUtil.isNullOrEmpty(mTWordMngtDTO.getWordLgcNm())) {
+            if (!StringUtil.isNullOrEmpty(mTWordMngtDTO.getWordLgcNm())) {
                 checkVailDateCten = "단어논리명이 없습니다.";
             }
-            else if (!StringUtil.isNullOrEmpty(mTWordMngtDTO.getDescCten())) {
+            if (!StringUtil.isNullOrEmpty(mTWordMngtDTO.getDescCten())) {
                 checkVailDateCten = "단어설명이 없습니다.";
             }
 
@@ -58,13 +58,43 @@ public class MTWordMngtCTRL {
 
     @PostMapping("/update")
     public ResponseEntity<SshdResponse<List<MTWordMngtDTO>>> update(@RequestBody MTWordMngtDTO mTWordMngtDTO) {
-        SshdResponse<List<MTWordMngtDTO>> resultData = mTWordMngtSVC.update(mTWordMngtDTO);
+        SshdResponse<List<MTWordMngtDTO>> resultData = new SshdResponse<List<MTWordMngtDTO>>();
+        String checkVailDateCten = "";
+        try {
+            // 필수값 확인
+            if (!StringUtil.isNullOrEmpty(mTWordMngtDTO.getWordId())) {
+                checkVailDateCten = checkVailDateCten.isEmpty() ? "" : "\n";
+                checkVailDateCten += "단어물리명이 없습니다.";
+            }
+
+            resultData = mTWordMngtSVC.update(mTWordMngtDTO);
+
+        }
+        catch (SshdException e) {
+            resultData.setResultCd("99");
+            resultData.setResultCten(e.getMessage());
+        }
         return ResponseEntity.ok(resultData);
     }
 
     @PostMapping("/delete")
     public ResponseEntity<SshdResponse<List<MTWordMngtDTO>>> delete(@RequestBody MTWordMngtDTO mTWordMngtDTO) {
-        SshdResponse<List<MTWordMngtDTO>> resultData = mTWordMngtSVC.delete(mTWordMngtDTO);
+        SshdResponse<List<MTWordMngtDTO>> resultData = new SshdResponse<List<MTWordMngtDTO>>();
+        String checkVailDateCten = "";
+        try {
+            // 필수값 확인
+            if (!StringUtil.isNullOrEmpty(mTWordMngtDTO.getWordId())) {
+                checkVailDateCten = checkVailDateCten.isEmpty() ? "" : "\n";
+                checkVailDateCten += "단어물리명이 없습니다.";
+            }
+        }
+        catch (SshdException e) {
+            resultData.setResultCd("99");
+            resultData.setResultCten(e.getMessage());
+        }
+
+        resultData = mTWordMngtSVC.delete(mTWordMngtDTO);
+
         return ResponseEntity.ok(resultData);
     }
 }
