@@ -8,35 +8,41 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 
 /**
- * @Data: Getter, Setter, RequiredArgsConstructor, ToString, EqualsAndHashCode를 모두 포함합니다.
- * @NoArgsConstructor: 파라미터가 없는 기본 생성자를 생성합니다.
- * @AllArgsConstructor: 모든 필드를 파라미터로 받는 생성자를 생성합니다.
+ * 단어 상세 정보 DTO
  */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class MTWordMngtSub01DTO {
-
+    /** 단어 ID */
     @Size(max = 30)
     private String wordId;
 
+    /** 단어 물리명 */
     @Size(max = 100)
     private String wordPscNm;
 
+    /** 단어 논리명 */
     @Size(max = 100)
     private String wordLgcNm;
 
+    /** 설명 */
     @Size(max = 1000)
     private String descCten;
 
+    /** 사용 여부 */
     @Size(max = 1)
     private String useYn;
 
+    /** 최초 등록 일시 */
     private LocalDateTime frRgstDttm;
 
+    /** 최초 등록자 ID */
     private String frRgstId;
 
+    /** 최종 수정 일시 */
     private LocalDateTime finlChgDttm;
 
+    /** 최종 수정자 ID */
     private String finlChgId;
 }

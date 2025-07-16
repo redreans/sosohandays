@@ -5,17 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c6208d31-02ce-4b2a-bfc8-f20aa82d6bdd" name="변경" comment="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
-      <change afterPath="$PROJECT_DIR$/metaadmin/src/main/java/com/sosohandays/metaadmin/co/handler/SshExceptionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/metaadmin/src/main/java/com/sosohandays/metaadmin/dt/wordmngt/dto/MTWordMngtDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/logs/sosohandays-live.log" beforeDir="false" afterPath="$PROJECT_DIR$/api/logs/sosohandays-live.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/common/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/util/StringUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/util/StringUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/metaadmin/src/main/java/com/sosohandays/metaadmin/dt/wordmngt/biz/MTWordMngtCTRL.java" beforeDir="false" afterPath="$PROJECT_DIR$/metaadmin/src/main/java/com/sosohandays/metaadmin/dt/wordmngt/biz/MTWordMngtCTRL.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/metaadmin/src/main/java/com/sosohandays/metaadmin/dt/wordmngt/biz/MTWordMngtSVC.java" beforeDir="false" afterPath="$PROJECT_DIR$/metaadmin/src/main/java/com/sosohandays/metaadmin/dt/wordmngt/biz/MTWordMngtSVC.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/metaadmin/src/main/java/com/sosohandays/metaadmin/dt/wordmngt/db/MTWordMngtDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/metaadmin/src/main/java/com/sosohandays/metaadmin/dt/wordmngt/dto/MTWordMngtSub01DTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/metaadmin/src/main/java/com/sosohandays/metaadmin/dt/wordmngt/db/MTWordMngtSQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/metaadmin/src/main/java/com/sosohandays/metaadmin/dt/wordmngt/biz/MTWordMngtSQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/metaadmin/src/main/resources/mapper/mt/wordmngt/MTWordMngtSQL.xml" beforeDir="false" afterPath="$PROJECT_DIR$/metaadmin/src/main/resources/mapper/mt/wordmngt/MTWordMngtSQL.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/metaadmin/src/main/java/com/sosohandays/metaadmin/dt/wordmngt/dto/MTWordMngtDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/metaadmin/src/main/java/com/sosohandays/metaadmin/dt/wordmngt/dto/MTWordMngtDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/metaadmin/src/main/java/com/sosohandays/metaadmin/dt/wordmngt/dto/MTWordMngtSub01DTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/metaadmin/src/main/java/com/sosohandays/metaadmin/dt/wordmngt/dto/MTWordMngtSub01DTO.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,6 +159,9 @@
       </set>
     </attachedChunks>
   </component>
+  <component name="StructureViewState">
+    <option name="selectedTab" value="논리" />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="디폴트 작업">
       <changelist id="c6208d31-02ce-4b2a-bfc8-f20aa82d6bdd" name="변경" comment="" />
@@ -225,16 +221,42 @@
       <option name="project" value="LOCAL" />
       <updated>1752567284938</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
+      <option name="closed" value="true" />
+      <created>1752646962746</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1752646962746</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
+      <option name="closed" value="true" />
+      <created>1752647041871</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1752647041871</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="e0504acd-ad87-4b84-a685-12f3e17d5de5" value="TOOL_WINDOW" />
+      </map>
+    </option>
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+        <entry key="e0504acd-ad87-4b84-a685-12f3e17d5de5">
           <value>
             <State />
           </value>
