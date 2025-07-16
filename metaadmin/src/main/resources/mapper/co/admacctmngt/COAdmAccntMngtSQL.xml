@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sosohandays.metaadmin.co.admacctmngt.biz.COAdmAcctMngtMapper">
+
+    <resultMap id="cOAdmAcctMngtResultMap" type="com.sosohandays.metaadmin.co.admacctmngt.dto.COAdmAcctMngtSub01DTO">
+        <id property="acctId" column="ACCT_ID"/>
+        <result property="acctPwd" column="ACCT_PWD"/>
+        <result property="acctNm" column="ACCT_NM"/>
+        <result property="accRoleCd" column="ACC_ROLE_CD"/>
+        <result property="useYn" column="USE_YN"/>
+        <result property="frRgstDttm" column="FR_RGST_DTTM"/>
+        <result property="frRgstId" column="FR_RGST_ID"/>
+        <result property="finlChgDttm" column="FINL_CHG_DTTM"/>
+        <result property="finlChgId" column="FINL_CHG_ID"/>
+    </resultMap>
+
+    <select id="selectCOAdmAcmtById" parameterType="com.sosohandays.metaadmin.co.admacctmngt.dto.COAdmAcctMngtDTO" resultMap="cOAdmAcctMngtResultMap">
+SELECT ACCT_ID
+     , ACCT_PWD
+     , ACCT_NM
+     , ACC_ROLE_CD
+     , USE_YN
+     , FR_RGST_DTTM
+     , FR_RGST_ID
+     , FINL_CHG_DTTM
+     , FINL_CHG_ID
+  FROM TB_CO1001M_ADMACCT
+ WHERE ACCT_ID = #{acctId}
+    </select>
+
+    <select id="selectList" parameterType="com.sosohandays.metaadmin.co.admacctmngt.dto.COAdmAcctMngtDTO" resultMap="cOAdmAcctMngtResultMap">
+SELECT ACCT_ID
+     , ACCT_NM
+     , ACC_ROLE_CD
+     , USE_YN
+     , FR_RGST_DTTM
+     , FR_RGST_ID
+     , FINL_CHG_DTTM
+     , FINL_CHG_ID
+  FROM TB_CO1001M_ADMACCT
+    <where>
+        <if test="acctId != null and acctId != ''">
+            AND ACCT_ID = #{acctId}
+        </if>
+        <if test="acctNm != null and acctNm != ''">
+            AND ACCT_NM LIKE CONCAT('%', #{acctNm}, '%')
+        </if>
+        <if test="accRoleCd != null and accRoleCd != ''">
+            AND ACC_ROLE_CD = #{accRoleCd}
+        </if>
+        <if test="useYn != null and useYn != ''">
+            AND USE_YN = #{useYn}
+        </if>
+    </where>
+ ORDER BY FR_RGST_DTTM DESC
+    </select>
+
+    <select id="selectExists" parameterType="map" resultType="boolean">
+SELECT COUNT(1) > 0
+  FROM TB_CO1001M_ADMACCT
+        <where>
+            <if test="acctId != null and acctId != ''">
+                AND ACCT_ID = #{acctId}
+            </if>
+        </where>
+    </select>
+
+    <insert id="insert" parameterType="com.sosohandays.metaadmin.co.admacctmngt.dto.COAdmAcctMngtSub01DTO">
+INSERT INTO TB_CO1001M_ADMACCT
+     ( ACCT_ID
+     , ACCT_PWD
+     , ACCT_NM
+     , ACC_ROLE_CD
+     , USE_YN
+     , FR_RGST_DTTM
+     , FR_RGST_ID
+     , FINL_CHG_DTTM
+     , FINL_CHG_ID
+     )
+VALUES (
+       #{acctId}
+     , #{acctPwd}
+     , #{acctNm}
+     , #{accRoleCd}
+     , 'Y'
+     , NOW()
+     , #{frRgstId}
+     , NOW()
+     , #{finlChgId}
+)
+    </insert>
+
+    <update id="update" parameterType="com.sosohandays.metaadmin.co.admacctmngt.dto.COAdmAcctMngtSub01DTO">
+UPDATE TB_CO1001M_ADMACCT
+   SET ACCT_PWD = #{acctPwd}
+     , ACCT_NM = #{acctNm}
+     , ACC_ROLE_CD = #{accRoleCd}
+     , USE_YN = #{useYn}
+     , FINL_CHG_DTTM = NOW()
+     , FINL_CHG_ID = #{finlChgId}
+ WHERE ACCT_ID = #{acctId}
+    </update>
+
+</mapper>

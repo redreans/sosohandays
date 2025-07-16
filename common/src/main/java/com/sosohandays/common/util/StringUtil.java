@@ -1,4 +1,4 @@
-package util;
+package com.sosohandays.common.util;
 
 public class StringUtil {
 

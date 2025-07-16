@@ -1,12 +1,12 @@
 package com.sosohandays.metaadmin.co.handler;
 
-import exception.SshdException;
+import com.sosohandays.common.exception.SshdException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import response.SshdResponse;
+import com.sosohandays.common.response.SshdResponse;
 
 @ControllerAdvice
 @Slf4j

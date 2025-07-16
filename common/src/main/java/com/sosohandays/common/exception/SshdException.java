@@ -1,4 +1,4 @@
-package exception;
+package com.sosohandays.common.exception;
 
 public class SshdException extends RuntimeException {
     public SshdException() {

@@ -8,12 +8,12 @@ import java.util.List;
 import java.util.Map;
 
 @Mapper
-public interface MTWordMngtSQL {
+public interface MTWordMngtMapper {
     // 단어 조회
     List<MTWordMngtSub01DTO> selectByCond(MTWordMngtDTO dto);
 
     // 존재유무 확인
-    boolean selectExists(Map map);
+    boolean selectExists(Map<String, Object> map);
 
     // WORD_ID 채번
     String selectNextWordId();

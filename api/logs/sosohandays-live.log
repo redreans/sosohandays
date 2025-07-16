@@ -1,5 +1,30 @@
-2025-07-16T13:47:24.999+09:00  INFO 47912 --- [Test worker] c.sosohandays.api.ApiApplicationTests    : Starting ApiApplicationTests using Java 21.0.7 with PID 47912 (started by redre in D:\00.project\01.java\sosohandays\api)
-2025-07-16T13:47:25.003+09:00  INFO 47912 --- [Test worker] c.sosohandays.api.ApiApplicationTests    : The following 1 profile is active: "live"
-2025-07-16T13:47:26.434+09:00  WARN 47912 --- [Test worker] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.sosohandays.api]' package. Please check your configuration.
-2025-07-16T13:47:27.924+09:00  INFO 47912 --- [Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
-2025-07-16T13:47:28.073+09:00  INFO 47912 --- [Test worker] c.sosohandays.api.ApiApplicationTests    : Started ApiApplicationTests in 3.504 seconds (process running for 5.75)
+2025-07-18T10:52:50.997+09:00  INFO 68036 --- [Test worker] c.sosohandays.api.ApiApplicationTests    : Starting ApiApplicationTests using Java 21.0.7 with PID 68036 (started by redre in D:\00.project\01.java\sosohandays\api)
+2025-07-18T10:52:51.010+09:00  INFO 68036 --- [Test worker] c.sosohandays.api.ApiApplicationTests    : The following 1 profile is active: "live"
+2025-07-18T10:52:52.955+09:00  WARN 68036 --- [Test worker] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.sosohandays.api]' package. Please check your configuration.
+2025-07-18T10:52:56.894+09:00  INFO 68036 --- [Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2025-07-18T10:52:57.191+09:00  INFO 68036 --- [Test worker] c.sosohandays.api.ApiApplicationTests    : Started ApiApplicationTests in 6.754 seconds (process running for 9.181)
+2025-07-18T11:03:37.575+09:00  INFO 65372 --- [Test worker] c.sosohandays.api.ApiApplicationTests    : Starting ApiApplicationTests using Java 21.0.7 with PID 65372 (started by redre in D:\00.project\01.java\sosohandays\api)
+2025-07-18T11:03:37.577+09:00  INFO 65372 --- [Test worker] c.sosohandays.api.ApiApplicationTests    : The following 1 profile is active: "live"
+2025-07-18T11:03:39.302+09:00  WARN 65372 --- [Test worker] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.sosohandays.api]' package. Please check your configuration.
+2025-07-18T11:03:40.800+09:00  INFO 65372 --- [Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2025-07-18T11:03:40.895+09:00  INFO 65372 --- [Test worker] c.sosohandays.api.ApiApplicationTests    : Started ApiApplicationTests in 3.872 seconds (process running for 5.385)
+2025-07-18T11:06:04.216+09:00  INFO 66492 --- [Test worker] c.sosohandays.api.ApiApplicationTests    : Starting ApiApplicationTests using Java 21.0.7 with PID 66492 (started by redre in D:\00.project\01.java\sosohandays\api)
+2025-07-18T11:06:04.218+09:00  INFO 66492 --- [Test worker] c.sosohandays.api.ApiApplicationTests    : The following 1 profile is active: "live"
+2025-07-18T11:06:05.625+09:00  WARN 66492 --- [Test worker] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.sosohandays.api]' package. Please check your configuration.
+2025-07-18T11:06:07.286+09:00  INFO 66492 --- [Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2025-07-18T11:06:07.428+09:00  INFO 66492 --- [Test worker] c.sosohandays.api.ApiApplicationTests    : Started ApiApplicationTests in 3.648 seconds (process running for 5.188)
+2025-07-18T11:17:07.789+09:00  INFO 11040 --- [Test worker] c.sosohandays.api.ApiApplicationTests    : Starting ApiApplicationTests using Java 21.0.7 with PID 11040 (started by redre in D:\00.project\01.java\sosohandays\api)
+2025-07-18T11:17:07.791+09:00  INFO 11040 --- [Test worker] c.sosohandays.api.ApiApplicationTests    : The following 1 profile is active: "live"
+2025-07-18T11:17:09.807+09:00  WARN 11040 --- [Test worker] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.sosohandays.api]' package. Please check your configuration.
+2025-07-18T11:17:11.846+09:00  INFO 11040 --- [Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2025-07-18T11:17:12.398+09:00  INFO 11040 --- [Test worker] c.sosohandays.api.ApiApplicationTests    : Started ApiApplicationTests in 5.217 seconds (process running for 7.704)
+2025-07-18T13:19:25.017+09:00  INFO 336 --- [Test worker] c.sosohandays.api.ApiApplicationTests    : Starting ApiApplicationTests using Java 21.0.7 with PID 336 (started by redre in D:\00.project\01.java\sosohandays\api)
+2025-07-18T13:19:25.019+09:00  INFO 336 --- [Test worker] c.sosohandays.api.ApiApplicationTests    : The following 1 profile is active: "live"
+2025-07-18T13:19:26.451+09:00  WARN 336 --- [Test worker] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.sosohandays.api]' package. Please check your configuration.
+2025-07-18T13:19:27.944+09:00  INFO 336 --- [Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2025-07-18T13:19:28.055+09:00  INFO 336 --- [Test worker] c.sosohandays.api.ApiApplicationTests    : Started ApiApplicationTests in 3.452 seconds (process running for 5.49)
+2025-07-18T13:26:46.502+09:00  INFO 8412 --- [Test worker] c.sosohandays.api.ApiApplicationTests    : Starting ApiApplicationTests using Java 21.0.7 with PID 8412 (started by redre in D:\00.project\01.java\sosohandays\api)
+2025-07-18T13:26:46.507+09:00  INFO 8412 --- [Test worker] c.sosohandays.api.ApiApplicationTests    : The following 1 profile is active: "live"
+2025-07-18T13:26:53.698+09:00  WARN 8412 --- [Test worker] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.sosohandays.api]' package. Please check your configuration.
+2025-07-18T13:27:00.255+09:00  INFO 8412 --- [Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2025-07-18T13:27:00.649+09:00  INFO 8412 --- [Test worker] c.sosohandays.api.ApiApplicationTests    : Started ApiApplicationTests in 16.311 seconds (process running for 25.14)

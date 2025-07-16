@@ -2,7 +2,7 @@ package com.sosohandays.metaadmin.dt.wordmngt.biz;
 
 import com.sosohandays.metaadmin.dt.wordmngt.dto.MTWordMngtDTO;
 import com.sosohandays.metaadmin.dt.wordmngt.dto.MTWordMngtSub01DTO;
-import exception.SshdException;
+import com.sosohandays.common.exception.SshdException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -11,10 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import response.SshdResponse;
-import util.StringUtil;
-
-import java.util.List;
+import com.sosohandays.common.response.SshdResponse;
+import com.sosohandays.common.util.StringUtil;
 
 @Slf4j
 @Validated
@@ -29,7 +27,7 @@ public class MTWordMngtCTRL {
     public ResponseEntity<SshdResponse<MTWordMngtDTO>> select(@RequestBody MTWordMngtDTO mTWordMngtDTO) {
         SshdResponse<MTWordMngtDTO> resultData;
 
-        resultData = mTWordMngtSVC.getList(mTWordMngtDTO);
+        resultData = mTWordMngtSVC.selectList(mTWordMngtDTO);
 
         return ResponseEntity.ok(resultData);
     }
@@ -54,7 +52,7 @@ public class MTWordMngtCTRL {
             }
         }
 
-        resultData = mTWordMngtSVC.insert(mTWordMngtDTO);
+        resultData = mTWordMngtSVC.insertList(mTWordMngtDTO);
 
         return ResponseEntity.ok(resultData);
     }
@@ -69,7 +67,7 @@ public class MTWordMngtCTRL {
             }
         }
 
-        resultData = mTWordMngtSVC.update(mTWordMngtDTO);
+        resultData = mTWordMngtSVC.updateList(mTWordMngtDTO);
 
         return ResponseEntity.ok(resultData);
     }

@@ -21,3 +21,9 @@ mybatis:
   configuration:
     map-underscore-to-camel-case: true
   type-aliases-package: com.sosohandays.metaadmin
+
+jwt:
+  access-secret: 04D0H7ebml1yGhVjsLDSDwL64EY5W+uxmBRJxUC83DI=
+  access-expiration-ms: 3600000   # 1시간
+  refresh-secret: N7KJ7QVTl6oNDrjuJflHjLsJ9uoh12H/ZgIfAyOLrfA=
+  refresh-expiration-ms: 604800000 # 7일
