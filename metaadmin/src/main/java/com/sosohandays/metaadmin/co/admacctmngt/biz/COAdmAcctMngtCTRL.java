@@ -3,6 +3,7 @@ package com.sosohandays.metaadmin.co.admacctmngt.biz;
 import com.sosohandays.common.response.SshdResponse;
 import com.sosohandays.metaadmin.co.admacctmngt.dto.COAdmAcctMngtDTO;
 import com.sosohandays.metaadmin.co.admacctmngt.dto.COJwtAdmAcctTokenDTO;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Map;
 
 @Slf4j
 @Validated
@@ -34,6 +37,18 @@ public class COAdmAcctMngtCTRL {
         SshdResponse<Void> resultData;
 
         resultData = cOAdmAcctMngtSVC.logout(cOAdmAcctMngtDTO);
+
+        return ResponseEntity.ok(resultData);
+    }
+
+    /**
+     * 현재 로그인한 사용자 정보 조회
+     */
+    @PostMapping("/me")
+    public ResponseEntity<SshdResponse<COAdmAcctMngtDTO>> getCurrentUser(HttpServletRequest request) {
+        SshdResponse<COAdmAcctMngtDTO> resultData;
+
+        resultData = cOAdmAcctMngtSVC.getCurrentUser(request);
 
         return ResponseEntity.ok(resultData);
     }
@@ -65,4 +80,27 @@ public class COAdmAcctMngtCTRL {
         return ResponseEntity.ok(resultData);
     }
 
+    /**
+     * 액세스 토큰 유효성 검증
+     */
+    @PostMapping("/validateToken")
+    public ResponseEntity<SshdResponse<Map<String, Object>>> validateToken(HttpServletRequest request) {
+        SshdResponse<Map<String, Object>> resultData;
+
+        resultData = cOAdmAcctMngtSVC.validateToken(request);
+
+        return ResponseEntity.ok(resultData);
+    }
+
+    /**
+     * 토큰 갱신 (리프레시 토큰 사용)
+     */
+    @PostMapping("/refreshToken")
+    public ResponseEntity<SshdResponse<COJwtAdmAcctTokenDTO>> refreshToken(@RequestBody COJwtAdmAcctTokenDTO cOJwtAdmAcctTokenDTO) {
+        SshdResponse<COJwtAdmAcctTokenDTO> resultData;
+
+        resultData = cOAdmAcctMngtSVC.refreshToken(cOJwtAdmAcctTokenDTO);
+
+        return ResponseEntity.ok(resultData);
+    }
 }

@@ -3,9 +3,9 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.sosohandays.metaadmin.co.jwt.mapper.COJwtAdmAcctTokenMapper">
+<mapper namespace="com.sosohandays.metaadmin.co.admacctmngt.biz.COJwtAdmAcctTokenMapper">
 
-    <insert id="insertToken" parameterType="com.sosohandays.metaadmin.co.jwt.dto.COJwtAdmAcctTokenDTO">
+    <insert id="insertToken" parameterType="com.sosohandays.metaadmin.co.admacctmngt.dto.COJwtAdmAcctTokenDTO">
         INSERT INTO TB_CO1002L_JWTADMACCTTOKEN
                (ACCT_ID, DEV_ID, SEQ, REF_TKN, REF_EXP_DTTM, REG_DTTM)
         VALUES (
@@ -21,38 +21,38 @@
         )
     </insert>
 
-    <select id="selectByAcctIdAndDevId" parameterType="com.sosohandays.metaadmin.co.jwt.dto.COJwtAdmAcctTokenDTO" resultType="com.sosohandays.metaadmin.co.jwt.dto.COJwtAdmAcctTokenDTO">
+    <select id="selectByAcctIdAndDevId" parameterType="com.sosohandays.metaadmin.co.admacctmngt.dto.COJwtAdmAcctTokenDTO" resultType="com.sosohandays.metaadmin.co.admacctmngt.dto.COJwtAdmAcctTokenDTO">
 SELECT ACCT_ID
      , DEV_ID
      , REF_TKN
      , REF_EXP_DTTM
      , REG_DTTM
-  FROM TB_CO1002M_JWTADMACCTTOKEN
+  FROM TB_CO1002L_JWTADMACCTTOKEN
  WHERE ACCT_ID = #{acctId}
-   AND DEVICE_ID = #{devId}
+   AND DEV_ID= #{devId}
     </select>
 
     <!-- 계정별 모든 기기 리프레시 토큰 조회 -->
-    <select id="selectAllByAcctId" parameterType="com.sosohandays.metaadmin.co.jwt.dto.COJwtAdmAcctTokenDTO" resultType="com.sosohandays.metaadmin.co.jwt.dto.COJwtAdmAcctTokenDTO">
+    <select id="selectAllByAcctId" parameterType="com.sosohandays.metaadmin.co.admacctmngt.dto.COJwtAdmAcctTokenDTO" resultType="com.sosohandays.metaadmin.co.admacctmngt.dto.COJwtAdmAcctTokenDTO">
 SELECT ACCT_ID
      , DEV_ID
      , REF_TKN
      , REF_EXP_DTTM
      , REG_DTTM
-  FROM TB_CO1002M_JWTADMACCTTOKEN
+  FROM TB_CO1002L_JWTADMACCTTOKEN
  WHERE ACCT_ID = #{acctId}
     </select>
 
     <!-- 계정+기기별 리프레시 토큰 삭제 -->
-    <delete id="deleteByAcctIdAndDevId" parameterType="com.sosohandays.metaadmin.co.jwt.dto.COJwtAdmAcctTokenDTO">
- DELETE FROM TB_CO1002M_JWTADMACCTTOKEN
+    <delete id="deleteByAcctIdAndDevId" parameterType="com.sosohandays.metaadmin.co.admacctmngt.dto.COJwtAdmAcctTokenDTO">
+ DELETE FROM TB_CO1002L_JWTADMACCTTOKEN
   WHERE ACCT_ID = #{acctId}
     AND DEV_ID = #{devId}
     </delete>
 
     <!-- 계정별 모든 기기 토큰 삭제 -->
-    <delete id="deleteAllByAcctId" parameterType="com.sosohandays.metaadmin.co.jwt.dto.COJwtAdmAcctTokenDTO">
-DELETE FROM TB_CO1002M_JWTADMACCTTOKEN
+    <delete id="deleteAllByAcctId" parameterType="com.sosohandays.metaadmin.co.admacctmngt.dto.COJwtAdmAcctTokenDTO">
+DELETE FROM TB_CO1002L_JWTADMACCTTOKEN
  WHERE ACCT_ID = #{acctId}
     </delete>
 

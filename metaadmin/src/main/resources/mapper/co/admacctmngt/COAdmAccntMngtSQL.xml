@@ -22,10 +22,6 @@ SELECT ACCT_ID
      , ACCT_NM
      , ACC_ROLE_CD
      , USE_YN
-     , FR_RGST_DTTM
-     , FR_RGST_ID
-     , FINL_CHG_DTTM
-     , FINL_CHG_ID
   FROM TB_CO1001M_ADMACCT
  WHERE ACCT_ID = #{acctId}
     </select>

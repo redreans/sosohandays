@@ -1,5 +1,7 @@
 package com.sosohandays.metaadmin.co.config;
 
+import com.sosohandays.metaadmin.co.admacctmngt.biz.COJwtAdmAcctTokenBIZ;
+import com.sosohandays.metaadmin.co.jwt.JwtAuthenticationEntryPoint;
 import com.sosohandays.metaadmin.co.jwt.JwtAuthenticationFilter;
 import com.sosohandays.metaadmin.co.jwt.JwtUtil;
 import org.springframework.context.annotation.Bean;
@@ -20,20 +22,28 @@ public class SecurityConfig {
     }
 
     @Bean
-    public JwtAuthenticationFilter jwtAuthenticationFilter(JwtUtil jwtUtil) {
-        return new JwtAuthenticationFilter(jwtUtil);
+    public JwtAuthenticationFilter jwtAuthenticationFilter(JwtUtil jwtUtil, COJwtAdmAcctTokenBIZ coJwtAdmAcctTokenBIZ) {
+        return new JwtAuthenticationFilter(jwtUtil, coJwtAdmAcctTokenBIZ);
     }
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http, JwtAuthenticationFilter jwtAuthenticationFilter) throws Exception {
-        http
-                .csrf(csrf -> csrf.disable())  // REST API이므로 CSRF 비활성화
-                .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/co/admacctmngt/login", "/co/admacctmngt/logout").permitAll() // 로그인/로그아웃은 인증 없이 허용
-                        .anyRequest().authenticated() // 나머지 요청은 인증 필요
+    public SecurityFilterChain filterChain(HttpSecurity http,
+                                           JwtAuthenticationFilter jwtAuthenticationFilter,
+                                           JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint) throws Exception {
+        return http
+                .csrf(csrf -> csrf.disable())
+                .authorizeHttpRequests(auth ->
+                        auth.requestMatchers("/co/admacctmngt/login"
+                                           , "/co/admacctmngt/logout"
+                                           , "/co/admacctmngt/insert"
+                                           , "/error"
+                                           , "/actuator/**"     // 헬스체크 등
+                                           , "/favicon.ico").permitAll()
+                                .anyRequest().authenticated()
                 )
-                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
-
-        return http.build();
+                .exceptionHandling(ex -> ex.authenticationEntryPoint(jwtAuthenticationEntryPoint)
+                )
+                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+                .build();
     }
 }

@@ -9,6 +9,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.UnsupportedJwtException;
 import io.jsonwebtoken.security.Keys; // Keys.hmacShaKeyFor를 위해 필요
 import jakarta.annotation.PostConstruct; // @PostConstruct를 위해 필요
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j; // 로그를 위해 추가
 import org.springframework.stereotype.Component;
@@ -128,5 +129,18 @@ public class JwtUtil {
             // 만료된 토큰에서도 클레임 정보는 추출 가능 (주로 리프레시 토큰 재발급 시 사용)
             return e.getClaims();
         }
+    }
+
+    public String extractTokenFromRequest(HttpServletRequest request) {
+        String header = request.getHeader("Authorization");
+        if (header == null || !header.startsWith("Bearer ")) {
+            return null;
+        }
+        return header.substring(7);
+    }
+
+    public String extractDeviceIdFromRequest(HttpServletRequest request) {
+        // X-Device-ID 헤더에서 기기 ID 추출
+        return request.getHeader("X-Device-ID");
     }
 }
