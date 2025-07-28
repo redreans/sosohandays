@@ -4,39 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c6208d31-02ce-4b2a-bfc8-f20aa82d6bdd" name="변경" comment=".">
-      <change afterPath="$PROJECT_DIR$/common/src/main/java/com/sosohandays/common/util/DateUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/src/main/java/com/sosohandays/common/util/MapUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/metaadmin/src/main/java/com/sosohandays/metaadmin/co/admacctmngt/biz/COAdmAcctMngtCTRL.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/metaadmin/src/main/java/com/sosohandays/metaadmin/co/admacctmngt/biz/COAdmAcctMngtMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/metaadmin/src/main/java/com/sosohandays/metaadmin/co/admacctmngt/biz/COAdmAcctMngtSVC.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/metaadmin/src/main/java/com/sosohandays/metaadmin/co/admacctmngt/biz/COJwtAdmAcctTokenBIZ.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/metaadmin/src/main/java/com/sosohandays/metaadmin/co/admacctmngt/biz/COJwtAdmAcctTokenMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/metaadmin/src/main/java/com/sosohandays/metaadmin/co/admacctmngt/dto/COAdmAcctMngtDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/metaadmin/src/main/java/com/sosohandays/metaadmin/co/admacctmngt/dto/COAdmAcctMngtSub01DTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/metaadmin/src/main/java/com/sosohandays/metaadmin/co/admacctmngt/dto/COJwtAdmAcctTokenDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/metaadmin/src/main/java/com/sosohandays/metaadmin/co/config/SecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/metaadmin/src/main/java/com/sosohandays/metaadmin/co/jwt/JwtAuthenticationFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/metaadmin/src/main/java/com/sosohandays/metaadmin/co/jwt/JwtExceptionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/metaadmin/src/main/java/com/sosohandays/metaadmin/co/jwt/JwtProperties.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/metaadmin/src/main/java/com/sosohandays/metaadmin/co/jwt/JwtUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/metaadmin/src/main/resources/mapper/co/admacctmngt/COAdmAccntMngtSQL.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/metaadmin/src/main/resources/mapper/co/admacctmngt/COJwtAdmAcctTokenSQL.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
+    <list default="true" id="c6208d31-02ce-4b2a-bfc8-f20aa82d6bdd" name="변경" comment="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/logs/sosohandays-live.log" beforeDir="false" afterPath="$PROJECT_DIR$/api/logs/sosohandays-live.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/exception/SshdException.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/sosohandays/common/exception/SshdException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/response/SshdResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/sosohandays/common/response/SshdResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/util/StringUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/sosohandays/common/util/StringUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/metaadmin/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/metaadmin/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/metaadmin/logs/sosohandays-live.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metaadmin/src/main/java/com/sosohandays/metaadmin/co/handler/SshExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/metaadmin/src/main/java/com/sosohandays/metaadmin/co/handler/SshExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/metaadmin/src/main/java/com/sosohandays/metaadmin/dt/wordmngt/biz/MTWordMngtCTRL.java" beforeDir="false" afterPath="$PROJECT_DIR$/metaadmin/src/main/java/com/sosohandays/metaadmin/dt/wordmngt/biz/MTWordMngtCTRL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/metaadmin/src/main/java/com/sosohandays/metaadmin/dt/wordmngt/biz/MTWordMngtSQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/metaadmin/src/main/java/com/sosohandays/metaadmin/dt/wordmngt/biz/MTWordMngtMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/metaadmin/src/main/java/com/sosohandays/metaadmin/dt/wordmngt/biz/MTWordMngtSVC.java" beforeDir="false" afterPath="$PROJECT_DIR$/metaadmin/src/main/java/com/sosohandays/metaadmin/dt/wordmngt/biz/MTWordMngtSVC.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/metaadmin/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/metaadmin/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/metaadmin/src/main/resources/mapper/mt/wordmngt/MTWordMngtSQL.xml" beforeDir="false" afterPath="$PROJECT_DIR$/metaadmin/src/main/resources/mapper/mt/wordmngt/MTWordMngtSQL.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/metaadmin/src/main/java/com/sosohandays/metaadmin/dt/wordmngt/dto/MTWordMngtDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/metaadmin/src/main/java/com/sosohandays/metaadmin/dt/wordmngt/dto/MTWordMngtDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/metaadmin/src/main/java/com/sosohandays/metaadmin/dt/wordmngt/dto/MTWordMngtSub01DTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/metaadmin/src/main/java/com/sosohandays/metaadmin/dt/wordmngt/dto/MTWordMngtSub01DTO.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,9 +49,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
-        <option value="spring-beans.schema" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -149,11 +120,7 @@
       <recent name="D:\00.project\01.java\sosohandays\api\src\main\resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\00.project\01.java\sosohandays\metaadmin\src\main\resources\mapper\co" />
       <recent name="D:\00.project\01.java\sosohandays\metaadmin\src\main\resources" />
-    </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="com.sosohandays.metaadmin.co.jwt" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.sosohandays.metaadmin.co.handler" />
@@ -213,13 +180,6 @@
       <workItem from="1752024593140" duration="3873000" />
       <workItem from="1752455948186" duration="3600000" />
       <workItem from="1752555108514" duration="10111000" />
-      <workItem from="1752648026326" duration="23918000" />
-      <workItem from="1752803472312" duration="344000" />
-      <workItem from="1752803837437" duration="306000" />
-      <workItem from="1752804502518" duration="94000" />
-      <workItem from="1752804850813" duration="919000" />
-      <workItem from="1752805809720" duration="3138000" />
-      <workItem from="1752812662775" duration="37709000" />
     </task>
     <task id="LOCAL-00001" summary="수정">
       <option name="closed" value="true" />
@@ -277,31 +237,7 @@
       <option name="project" value="LOCAL" />
       <updated>1752647041871</updated>
     </task>
-    <task id="LOCAL-00008" summary="수정">
-      <option name="closed" value="true" />
-      <created>1752647490639</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1752647490639</updated>
-    </task>
-    <task id="LOCAL-00009" summary=".">
-      <option name="closed" value="true" />
-      <created>1752647639138</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1752647639138</updated>
-    </task>
-    <task id="LOCAL-00010" summary=".">
-      <option name="closed" value="true" />
-      <created>1752647840081</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1752647840081</updated>
-    </task>
-    <option name="localTasksCounter" value="11" />
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -331,7 +267,6 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="수정" />
     <MESSAGE value="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
-    <MESSAGE value="." />
-    <option name="LAST_COMMIT_MESSAGE" value="." />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
   </component>
 </project>
