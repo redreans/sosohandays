@@ -7,6 +7,7 @@
 
     <resultMap id="wordResultMap" type="com.sosohandays.metaadmin.dt.wordmngt.dto.MTWordMngtSub01DTO">
         <result property="wordId" column="WORD_ID"/>
+        <result property="wordNm" column="WORD_Nm"/>
         <result property="wordPscNm" column="WORD_PSC_NM"/>
         <result property="wordLgcNm" column="WORD_LGC_NM"/>
         <result property="descCten" column="DESC_CTEN"/>
@@ -19,6 +20,7 @@
 
     <select id="selectByCond" parameterType="com.sosohandays.metaadmin.dt.wordmngt.dto.MTWordMngtDTO" resultMap="wordResultMap">
 SELECT T.WORD_ID
+     , T.WORD_NM
      , T.WORD_PSC_NM
      , T.WORD_LGC_NM
      , T.DESC_CTEN
@@ -31,6 +33,9 @@ SELECT T.WORD_ID
         <where>
             <if test="wordId != null and wordId != ''">
                 AND T.WORD_ID = #{wordId}
+            </if>
+            <if test="wordNm != null and wordNm != ''">
+                AND T.WORD_NM LIKE CONCAT('%', #{wordNm}, '%')
             </if>
             <if test="wordPscNm != null and wordPscNm != ''">
                 AND T.WORD_PSC_NM LIKE CONCAT('%', #{wordPscNm}, '%')

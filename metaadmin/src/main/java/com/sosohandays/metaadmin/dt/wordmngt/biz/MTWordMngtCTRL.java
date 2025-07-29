@@ -41,6 +41,9 @@ public class MTWordMngtCTRL {
         // 필수값 확인
         for (int i = 0; i < mTWordMngtDTO.getMTWordMngtSub01DTOList().size(); i++) {
             MTWordMngtSub01DTO tuple = mTWordMngtDTO.getMTWordMngtSub01DTOList().get(i);
+            if (StringUtil.isNullOrEmpty(tuple.getWordNm())) {
+                throw new SshdException("단어명이 없습니다.");
+            }
             if (StringUtil.isNullOrEmpty(tuple.getWordPscNm())) {
                 throw new SshdException("단어물리명이 없습니다.");
             }

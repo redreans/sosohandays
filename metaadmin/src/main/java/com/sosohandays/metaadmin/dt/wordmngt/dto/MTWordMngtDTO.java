@@ -19,6 +19,11 @@ public class MTWordMngtDTO {
     private String wordId;
 
     /**
+     * 단어명 (Word Name)
+     */
+    private String wordNm;
+
+    /**
      * 단어 물리명 (Physical Name)
      */
     private String wordPscNm;

@@ -18,6 +18,10 @@ public class MTWordMngtSub01DTO {
     @Size(max = 30)
     private String wordId;
 
+    /** 단어 */
+    @Size(max = 100)
+    private String wordNm;
+
     /** 단어 물리명 */
     @Size(max = 100)
     private String wordPscNm;
