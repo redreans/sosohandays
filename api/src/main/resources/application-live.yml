@@ -5,7 +5,7 @@ spring:
   datasource:
     url: jdbc:mariadb://api.sosohandays.com:21001/sosohandays?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Seoul # 실제 운영 DB URL
     username: webapp
-    password: 1
+    password: 2
 
 logging:
   file:
