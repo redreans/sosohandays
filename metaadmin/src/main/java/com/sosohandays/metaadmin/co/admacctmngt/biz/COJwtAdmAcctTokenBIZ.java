@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional; // 트랜잭션
 @RequiredArgsConstructor // Lombok 어노테이션으로 final 필드에 대한 생성자 자동 생성
 public class COJwtAdmAcctTokenBIZ {
 
-    private final COJwtAdmAcctTokenMapper tokenMapper;
+    private final COJwtAdmAcctTokenMapper cOJwtAdmAcctTokenMapper;
 
     /**
      * 리프레시 토큰을 저장하거나 갱신합니다.
@@ -21,7 +21,7 @@ public class COJwtAdmAcctTokenBIZ {
      */
     @Transactional // 이 메서드 내의 DB 작업들이 하나의 트랜잭션으로 묶이도록 합니다.
     public void saveToken(COJwtAdmAcctTokenDTO cOJwtAdmAcctTokenDTO) {
-        int cnt = tokenMapper.insertToken(cOJwtAdmAcctTokenDTO);
+        int cnt = cOJwtAdmAcctTokenMapper.insertToken(cOJwtAdmAcctTokenDTO);
 
         if (cnt <= 0) {
             throw new SshdException("발급 토큰 저장 중 오류가 발생하였습니다.");
@@ -35,7 +35,7 @@ public class COJwtAdmAcctTokenBIZ {
     public COJwtAdmAcctTokenDTO getByAcctIdAndDevId(COJwtAdmAcctTokenDTO cOJwtAdmAcctTokenDTO) {
         // 이 메서드는 기존대로 유지하며, Mapper에서 적절한 SEQ 값을 가진 토큰을 조회하도록 구현합니다.
         // 예를 들어, 해당 계정/기기의 최신 토큰을 가져오도록 Mapper 쿼리를 구성할 수 있습니다.
-        return tokenMapper.selectByAcctIdAndDevId(cOJwtAdmAcctTokenDTO);
+        return cOJwtAdmAcctTokenMapper.selectByAcctIdAndDevId(cOJwtAdmAcctTokenDTO);
     }
 
     /**
@@ -43,7 +43,7 @@ public class COJwtAdmAcctTokenBIZ {
      */
     @Transactional // 삭제 작업도 트랜잭션으로 묶습니다.
     public void deleteTokenByAcctAndDevice(COJwtAdmAcctTokenDTO cOJwtAdmAcctTokenDTO) {
-        int affectedRows = tokenMapper.deleteByAcctIdAndDevId(cOJwtAdmAcctTokenDTO);
+        int affectedRows = cOJwtAdmAcctTokenMapper.deleteByAcctIdAndDevId(cOJwtAdmAcctTokenDTO);
         if (affectedRows <= 0) {
             // 토큰이 없어서 삭제되지 않은 경우도 있을 수 있으므로,
             // '오류'보다는 '토큰이 존재하지 않습니다'와 같은 메시지가 더 적절할 수 있습니다.
