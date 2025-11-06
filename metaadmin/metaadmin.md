@@ -20,11 +20,7 @@
 ---
 
 ### 기본단어 목록
-| 단어ID       | 단어명  | 단어물리명 | 단어논리명  | 단어설명     |사용유무|
-|------------|------|-------|--------|----------|-----|
-| 0000000001 | WORD | 단어    | WORD   | 최소한의 단어  |Y|
-| 0000000002 | DMN  | 도메인   | DOMAIN | 단어조합 도메인 |Y|
-| 0000000003 | TERM | 용어    | TERM | 단어조합 용어  |Y|
+> WrodList.md 참고
 
 
 ### 도메인
@@ -47,37 +43,106 @@
 ### 테이블 설계
 > https://dbdiagram.io/d/SOSOHANDAYS-6854ed24f039ec6d361690c1
 ```sql
-TABLE TB_CO0001M_WORD [NOTE: '공통_단어기본'] {
-  WORD_ID         VARCHAR(30)   [PK, NOTE: '단어 ID (예: 000001)']
-  WORD_NM         VARCHAR(100)  [NOTE: '단어명']
-  WORD_PSC_NM     VARCHAR(100)  [NOTE: '단어 물리명']
-  WORD_LGC_NM     VARCHAR(100)  [NOTE: '단어 논리명']
-  DESC_CTEN       VARCHAR(1000) [NOTE: '설명']
-  USE_YN          VARCHAR(1)    [NOTE: '사용 여부']
-  FR_RGST_DTTM    DATETIME      [NOTE: '최초 등록일시']
-  FR_RGST_ID      VARCHAR(30)   [NOTE: '최초 등록자 ID']
-  FINL_CHG_DTTM   DATETIME      [NOTE: '최종 변경일시']
-  FINL_CHG_ID     VARCHAR(30)   [NOTE: '최종 변경자 ID']
+TABLE TB_CO0001M_WORD {
+  WORD_ID VARCHAR(30) [pk, note: '단어ID']
+  WORD_NM VARCHAR(100) [note: '단어명']
+  WORD_PSC_NM VARCHAR(100) [note: '단어물리명']
+  WORD_LGC_NM VARCHAR(100) [note: '단어논리명']
+  DESC_CTEN VARCHAR(1000) [note: '설명내용']
+  USE_YN VARCHAR(1) [note: '사용여부']
+  FR_RGST_DTTM DATETIME [note: '최초등록일시']
+  FR_RGST_ID VARCHAR(30) [note: '최초등록ID']
+  FINL_CHG_DTTM DATETIME [note: '최종변경일시']
+  FINL_CHG_ID VARCHAR(30) [note: '최종변경ID']
+
+  note: '공통_단어기본'
 }
 
-TABLE TB_CO1001M_ADMACCT [NOTE: '공통_관리자계정'] {
-  ACCT_ID         VARCHAR(30)   [PK, NOTE: '계정ID']
-  ACCT_PWD        VARCHAR(100)  [NOT NULL, NOTE: '계정비밀번호']
-  ACCT_NM         VARCHAR(50)   [NOT NULL, NOTE: '계정명']
-  ACC_ROLE_CD     VARCHAR(2)    [NOT NULL, NOTE: '계정권한코드']
-  USE_YN          VARCHAR(1)    [NOT NULL, NOTE: '사용여부']
-  FR_RGST_DTTM    DATETIME      [NOT NULL, NOTE: '최초등록일시']
-  FR_RGST_ID      VARCHAR(30)   [NOT NULL, NOTE: '최초등록자ID']
-  FINL_CHG_DTTM   DATETIME      [NOT NULL, NOTE: '최종변경일시']
-  FINL_CHG_ID     VARCHAR(30)   [NOT NULL, NOTE: '최종변경자ID']
+TABLE TB_CO0002M_DMN {
+  DMN_ID VARCHAR(30) [pk, note: '도메인ID']
+  DMN_NM VARCHAR(100) [note: '도메인명']
+  DMN_PSC_NM VARCHAR(100) [note: '도메인물리명']
+  DMN_LGC_NM VARCHAR(100) [note: '도메인논리명']
+  DATA_TYPE_CD VARCHAR(2) [note: '데이터타입코드']
+  DATA_LEN INT [note: '데이터길이']
+  DEC_PL INT [note: '소수자리수']
+  DESC_CTEN VARCHAR(1000) [note: '설명내용']
+  USE_YN VARCHAR(1) [note: '사용여부']
+  FR_RGST_DTTM DATETIME [note: '최초등록일시']
+  FR_RGST_ID VARCHAR(30) [note: '최초등록ID']
+  FINL_CHG_DTTM DATETIME [note: '최종변경일시']
+  FINL_CHG_ID VARCHAR(30) [note: '최종변경ID']
+
+  note: '공통_도메인기본'
 }
 
-TABLE TB_CO1002L_JWTADMACCTTOKEN [NOTE: '공통_토큰'] {
-  ACCT_ID         VARCHAR(30)   [PK, NOTE: '계정ID']
-  DEV_ID          VARCHAR(100)  [PK, NOTE: '기기ID']
-  SEQ             INT           [PK, NOTE: '일련번호']
-  REF_TKN         TEXT          [NOT NULL, NOTE: '리프레시토큰']
-  REF_EXP_DTTM    DATETIME      [NOT NULL, NOTE: '리프레시토큰 만료일시']
-  REG_DTTM        DATETIME      [NOT NULL, NOTE: '등록일시']
+TABLE TB_CO0003L_DMNCD {
+  DMN_ID VARCHAR(30) [pk, note: '도메인ID']
+  CD_ID VARCHAR(10) [pk, note: '코드ID']
+  CD_NM VARCHAR(100) [note: '코드명']
+  CD_DESC VARCHAR(500) [note: '코드설명']
+  DATA_TYPE_CD VARCHAR(2) [note: '데이터타입코드']
+  SRT_NO INT [note: '정렬번호']
+  USE_YN VARCHAR(1) [note: '사용여부']
+  FR_RGST_DTTM DATETIME [note: '최초등록일시']
+  FR_RGST_ID VARCHAR(30) [note: '최초등록ID']
+  FINL_CHG_DTTM DATETIME [note: '최종변경일시']
+  FINL_CHG_ID VARCHAR(30) [note: '최종변경ID']
+
+  note: '공통_도메인코드'
+}
+
+TABLE TB_CO0004M_TERM {
+  TERM_ID VARCHAR(30) [pk, note: '용어ID']
+  TERM_NM VARCHAR(100) [note: '용어명']
+  TERM_PSC_NM VARCHAR(100) [note: '용어물리명']
+  TERM_LGC_NM VARCHAR(100) [note: '용어논리명']
+  DMN_ID VARCHAR(30) [note: '도메인ID']
+  DESC_CTEN VARCHAR(1000) [note: '설명내용']
+  USE_YN VARCHAR(1) [note: '사용여부']
+  FR_RGST_DTTM DATETIME [note: '최초등록일시']
+  FR_RGST_ID VARCHAR(30) [note: '최초등록ID']
+  FINL_CHG_DTTM DATETIME [note: '최종변경일시']
+  FINL_CHG_ID VARCHAR(30) [note: '최종변경ID']
+
+  note: '공통_용어기본'
+}
+
+TABLE TB_CO0005L_WORDLST {
+  OBJ_ID VARCHAR(30) [pk, note: '객체ID (TERM_ID 또는 DMN_ID)']
+  OBJ_TYPE_CD VARCHAR(2) [pk, note: '객체타입코드 (01:용어, 02:도메인)']
+  WORD_ID VARCHAR(30) [note: '단어ID']
+  SRT_NO INT [note: '정렬번호']
+  FR_RGST_DTTM DATETIME [note: '최초등록일시']
+  FR_RGST_ID VARCHAR(30) [note: '최초등록ID']
+  FINL_CHG_DTTM DATETIME [note: '최종변경일시']
+  FINL_CHG_ID VARCHAR(30) [note: '최종변경ID']
+
+  note: '공통_단어내역'
+}
+
+TABLE TB_CO1001M_ADMACCT {
+  ACCT_ID VARCHAR(30) [pk, note: '계정ID']
+  ACCT_PWD VARCHAR(100) [not null, note: '계정비밀번호']
+  ACCT_NM VARCHAR(50) [not null, note: '계정명']
+  ACCT_ROLE_CD VARCHAR(2) [not null, note: '계정권한코드']
+  USE_YN VARCHAR(1) [not null, note: '사용여부']
+  FR_RGST_DTTM DATETIME [not null, note: '최초등록일시']
+  FR_RGST_ID VARCHAR(30) [not null, note: '최초등록ID']
+  FINL_CHG_DTTM DATETIME [not null, note: '최종변경일시']
+  FINL_CHG_ID VARCHAR(30) [not null, note: '최종변경ID']
+
+  note: '공통_관리자계정'
+}
+
+TABLE TB_CO1002L_JWTADMACCTTOKEN {
+  ACCT_ID VARCHAR(30) [pk, note: '계정ID']
+  DEV_ID VARCHAR(100) [pk, note: '기기ID']
+  SEQ INT [pk, note: '일련번호']
+  REF_TKN TEXT [not null, note: '리프레시토큰']
+  REF_EXP_DTTM DATETIME [not null, note: '리프레시만료일시']
+  REG_DTTM DATETIME [not null, note: '등록일시']
+
+  note: '공통_JWT관리자계정토큰'
 }
 ```

@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sosohandays.metaadmin.dt.dmnmngt.biz.MTDmnMngtMapper">
+
+    <!-- ================================================================ -->
+    <!-- 도메인 기본 정보 관련 쿼리 -->
+    <!-- ================================================================ -->
+
+    <resultMap id="dmnResultMap" type="com.sosohandays.metaadmin.dt.dmnmngt.dto.MTDmnMngtSub01DTO">
+        <result property="dmnId" column="DMN_ID"/>
+        <result property="dmnNm" column="DMN_NM"/>
+        <result property="dmnPscNm" column="DMN_PSC_NM"/>
+        <result property="dmnLgcNm" column="DMN_LGC_NM"/>
+        <result property="dataTypeCd" column="DATA_TYPE_CD"/>
+        <result property="dataLen" column="DATA_LEN"/>
+        <result property="decPl" column="DEC_PL"/>
+        <result property="descCten" column="DESC_CTEN"/>
+        <result property="useYn" column="USE_YN"/>
+        <result property="frRgstDttm" column="FR_RGST_DTTM"/>
+        <result property="frRgstId" column="FR_RGST_ID"/>
+        <result property="finlChgDttm" column="FINL_CHG_DTTM"/>
+        <result property="finlChgId" column="FINL_CHG_ID"/>
+    </resultMap>
+
+    <!-- ================================================================ -->
+    <!-- 도메인 코드 관련 쿼리 -->
+    <!-- ================================================================ -->
+
+    <resultMap id="dmnCodeResultMap" type="com.sosohandays.metaadmin.dt.dmnmngt.dto.MTDmnMngtSub02DTO">
+        <result property="dmnId" column="DMN_ID"/>
+        <result property="cdId" column="CD_ID"/>
+        <result property="cdNm" column="CD_NM"/>
+        <result property="cdDesc" column="CD_DESC"/>
+        <result property="dataTypeCd" column="DATA_TYPE_CD"/>
+        <result property="srtNo" column="SRT_NO"/>
+        <result property="useYn" column="USE_YN"/>
+        <result property="frRgstDttm" column="FR_RGST_DTTM"/>
+        <result property="frRgstId" column="FR_RGST_ID"/>
+        <result property="finlChgDttm" column="FINL_CHG_DTTM"/>
+        <result property="finlChgId" column="FINL_CHG_ID"/>
+    </resultMap>
+
+    <!-- ================================================================ -->
+    <!-- 도메인-단어 매핑 관련 쿼리 -->
+    <!-- ================================================================ -->
+
+    <resultMap id="wordLstResultMap" type="com.sosohandays.metaadmin.dt.dmnmngt.dto.MTDmnMngtSub03DTO">
+        <result property="objId" column="OBJ_ID"/>
+        <result property="objTypeCd" column="OBJ_TYPE_CD"/>
+        <result property="wordId" column="WORD_ID"/>
+        <result property="srtNo" column="SRT_NO"/>
+        <result property="frRgstDttm" column="FR_RGST_DTTM"/>
+        <result property="frRgstId" column="FR_RGST_ID"/>
+        <result property="finlChgDttm" column="FINL_CHG_DTTM"/>
+        <result property="finlChgId" column="FINL_CHG_ID"/>
+        <!-- 연관 단어 정보 -->
+        <result property="wordNm" column="WORD_NM"/>
+        <result property="wordPscNm" column="WORD_PSC_NM"/>
+        <result property="wordLgcNm" column="WORD_LGC_NM"/>
+    </resultMap>
+
+    <!-- 도메인 조건별 조회 -->
+    <select id="selectByCond" parameterType="com.sosohandays.metaadmin.dt.dmnmngt.dto.MTDmnMngtDTO" resultMap="dmnResultMap">
+        SELECT T.DMN_ID
+        , T.DMN_NM
+        , T.DMN_PSC_NM
+        , T.DMN_LGC_NM
+        , T.DATA_TYPE_CD
+        , T.DATA_LEN
+        , T.DEC_PL
+        , T.DESC_CTEN
+        , T.USE_YN
+        , T.FR_RGST_DTTM
+        , T.FR_RGST_ID
+        , T.FINL_CHG_DTTM
+        , T.FINL_CHG_ID
+        FROM TB_CO0002M_DMN T
+        <where>
+            <if test="dmnId != null and dmnId != ''">
+                AND T.DMN_ID = #{dmnId}
+            </if>
+            <if test="dmnNm != null and dmnNm != ''">
+                AND T.DMN_NM LIKE CONCAT('%', #{dmnNm}, '%')
+            </if>
+            <if test="dmnPscNm != null and dmnPscNm != ''">
+                AND T.DMN_PSC_NM LIKE CONCAT('%', #{dmnPscNm}, '%')
+            </if>
+            <if test="dmnLgcNm != null and dmnLgcNm != ''">
+                AND T.DMN_LGC_NM LIKE CONCAT('%', #{dmnLgcNm}, '%')
+            </if>
+            <if test="dataTypeCd != null and dataTypeCd != ''">
+                AND T.DATA_TYPE_CD = #{dataTypeCd}
+            </if>
+            <if test="useYn != null and useYn != ''">
+                AND T.USE_YN = #{useYn}
+            </if>
+        </where>
+        ORDER BY T.FR_RGST_DTTM DESC
+    </select>
+
+    <!-- 도메인 존재 여부 확인 -->
+    <select id="selectExists" parameterType="map" resultType="boolean">
+        SELECT COUNT(1) > 0
+        FROM TB_CO0002M_DMN
+        <where>
+            <if test="dmnId != null and dmnId != ''">
+                AND DMN_ID = #{dmnId}
+            </if>
+            <if test="dmnLgcNm != null and dmnLgcNm != ''">
+                AND DMN_LGC_NM = #{dmnLgcNm}
+            </if>
+            <if test="dmnPscNm != null and dmnPscNm != ''">
+                AND DMN_PSC_NM = #{dmnPscNm}
+            </if>
+            <if test="dmnNm != null and dmnNm != ''">
+                AND DMN_NM = #{dmnNm}
+            </if>
+        </where>
+    </select>
+
+    <!-- 다음 도메인ID 채번 -->
+    <select id="selectNextDmnId" resultType="string">
+        SELECT LPAD(COALESCE(MAX(CAST(DMN_ID AS UNSIGNED)) + 1, 2000001), 10, '0') AS DMN_ID
+        FROM TB_CO0002M_DMN
+        WHERE DMN_ID REGEXP '^[0-9]+$'
+    </select>
+
+    <!-- 도메인 등록 -->
+    <insert id="insert" parameterType="com.sosohandays.metaadmin.dt.dmnmngt.dto.MTDmnMngtSub01DTO">
+        INSERT INTO TB_CO0002M_DMN
+        ( DMN_ID
+        , DMN_NM
+        , DMN_PSC_NM
+        , DMN_LGC_NM
+        , DATA_TYPE_CD
+        , DATA_LEN
+        , DEC_PL
+        , DESC_CTEN
+        , USE_YN
+        , FR_RGST_DTTM
+        , FR_RGST_ID
+        , FINL_CHG_DTTM
+        , FINL_CHG_ID
+        )
+        VALUES ( #{dmnId}
+               , #{dmnNm}
+               , #{dmnPscNm}
+               , #{dmnLgcNm}
+               , #{dataTypeCd}
+               , #{dataLen}
+               , #{decPl}
+               , #{descCten}
+               , 'Y'
+               , NOW()
+               , #{frRgstId}
+               , NOW()
+               , #{finlChgId}
+               )
+    </insert>
+
+    <!-- 도메인 수정 -->
+    <update id="update" parameterType="com.sosohandays.metaadmin.dt.dmnmngt.dto.MTDmnMngtSub01DTO">
+        UPDATE TB_CO0002M_DMN
+        SET DMN_NM = #{dmnNm}
+          , DMN_PSC_NM = #{dmnPscNm}
+          , DMN_LGC_NM = #{dmnLgcNm}
+          , DATA_TYPE_CD = #{dataTypeCd}
+          , DATA_LEN = #{dataLen}
+          , DEC_PL = #{decPl}
+          , DESC_CTEN = #{descCten}
+          , USE_YN = #{useYn}
+          , FINL_CHG_DTTM = NOW()
+          , FINL_CHG_ID = #{finlChgId}
+        WHERE DMN_ID = #{dmnId}
+    </update>
+
+    <!-- 도메인 코드 목록 조회 -->
+    <select id="selectDmnCodeList" parameterType="com.sosohandays.metaadmin.dt.dmnmngt.dto.MTDmnMngtDTO" resultMap="dmnCodeResultMap">
+        SELECT T.DMN_ID
+        , T.CD_ID
+        , T.CD_NM
+        , T.CD_DESC
+        , T.DATA_TYPE_CD
+        , T.SRT_NO
+        , T.USE_YN
+        , T.FR_RGST_DTTM
+        , T.FR_RGST_ID
+        , T.FINL_CHG_DTTM
+        , T.FINL_CHG_ID
+        FROM TB_CO0003L_DMNCD T
+        WHERE T.DMN_ID = #{dmnId}
+        <if test="useYn != null and useYn != ''">
+            AND T.USE_YN = #{useYn}
+        </if>
+        ORDER BY T.SRT_NO, T.CD_ID
+    </select>
+
+    <!-- 도메인 코드 존재 여부 확인 -->
+    <select id="selectDmnCodeExists" parameterType="map" resultType="boolean">
+        SELECT COUNT(1) > 0
+        FROM TB_CO0003L_DMNCD
+        WHERE DMN_ID = #{dmnId}
+          AND CD_ID = #{cdId}
+    </select>
+
+    <!-- 도메인 코드 등록 -->
+    <insert id="insertDmnCode" parameterType="com.sosohandays.metaadmin.dt.dmnmngt.dto.MTDmnMngtSub02DTO">
+        INSERT INTO TB_CO0003L_DMNCD
+        ( DMN_ID
+        , CD_ID
+        , CD_NM
+        , CD_DESC
+        , DATA_TYPE_CD
+        , SRT_NO
+        , USE_YN
+        , FR_RGST_DTTM
+        , FR_RGST_ID
+        , FINL_CHG_DTTM
+        , FINL_CHG_ID
+        )
+        VALUES ( #{dmnId}
+               , #{cdId}
+               , #{cdNm}
+               , #{cdDesc}
+               , #{dataTypeCd}
+               , #{srtNo}
+               , 'Y'
+               , NOW()
+               , #{frRgstId}
+               , NOW()
+               , #{finlChgId}
+               )
+    </insert>
+
+    <!-- 도메인 코드 수정 -->
+    <update id="updateDmnCode" parameterType="com.sosohandays.metaadmin.dt.dmnmngt.dto.MTDmnMngtSub02DTO">
+        UPDATE TB_CO0003L_DMNCD
+        SET CD_NM = #{cdNm}
+          , CD_DESC = #{cdDesc}
+          , DATA_TYPE_CD = #{dataTypeCd}
+          , SRT_NO = #{srtNo}
+          , USE_YN = #{useYn}
+          , FINL_CHG_DTTM = NOW()
+          , FINL_CHG_ID = #{finlChgId}
+        WHERE DMN_ID = #{dmnId}
+          AND CD_ID = #{cdId}
+    </update>
+
+    <!-- 도메인 코드 삭제 -->
+    <delete id="deleteDmnCode" parameterType="com.sosohandays.metaadmin.dt.dmnmngt.dto.MTDmnMngtSub02DTO">
+        DELETE FROM TB_CO0003L_DMNCD
+        WHERE DMN_ID = #{dmnId}
+          AND CD_ID = #{cdId}
+    </delete>
+
+    <!-- 도메인-단어 매핑 목록 조회 -->
+    <select id="selectWordLstList" parameterType="com.sosohandays.metaadmin.dt.dmnmngt.dto.MTDmnMngtDTO" resultMap="wordLstResultMap">
+        SELECT T.OBJ_ID
+             , T.OBJ_TYPE_CD
+             , T.WORD_ID
+             , T.SRT_NO
+             , T.FR_RGST_DTTM
+             , T.FR_RGST_ID
+             , T.FINL_CHG_DTTM
+             , T.FINL_CHG_ID
+             , W.WORD_NM
+             , W.WORD_PSC_NM
+             , W.WORD_LGC_NM
+        FROM TB_CO0005L_WORDLST T
+                 LEFT JOIN TB_CO0001M_WORD W ON T.WORD_ID = W.WORD_ID
+        WHERE T.OBJ_ID = #{dmnId}
+          AND T.OBJ_TYPE_CD = '02'
+        ORDER BY T.SRT_NO, T.WORD_ID
+    </select>
+
+    <!-- 도메인-단어 매핑 등록 -->
+    <insert id="insertWordLst" parameterType="com.sosohandays.metaadmin.dt.dmnmngt.dto.MTDmnMngtSub03DTO">
+        INSERT INTO TB_CO0005L_WORDLST
+        ( OBJ_ID
+        , OBJ_TYPE_CD
+        , WORD_ID
+        , SRT_NO
+        , FR_RGST_DTTM
+        , FR_RGST_ID
+        , FINL_CHG_DTTM
+        , FINL_CHG_ID
+        )
+        VALUES ( #{objId}
+               , #{objTypeCd}
+               , #{wordId}
+               , #{srtNo}
+               , NOW()
+               , #{frRgstId}
+               , NOW()
+               , #{finlChgId}
+               )
+    </insert>
+
+    <!-- 도메인-단어 매핑 삭제 -->
+    <delete id="deleteWordLst" parameterType="com.sosohandays.metaadmin.dt.dmnmngt.dto.MTDmnMngtSub03DTO">
+        DELETE FROM TB_CO0005L_WORDLST
+        WHERE OBJ_ID = #{objId}
+        AND OBJ_TYPE_CD = #{objTypeCd}
+        <if test="wordId != null and wordId != ''">
+            AND WORD_ID = #{wordId}
+        </if>
+    </delete>
+
+</mapper>
